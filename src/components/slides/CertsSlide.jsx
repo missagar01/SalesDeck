@@ -6,8 +6,8 @@ export default function CertsSlide({ isActive }) {
     <Slide isActive={isActive}>
       <div className="eyebrow">Quality & government certification</div>
       <h2>Tested, stamped, <span className="accent">accountable.</span></h2>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-[10px] md:gap-[16px] mt-[16px] md:mt-[30px] max-w-[920px]">
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-[10px] md:gap-[16px] mt-[16px] md:mt-[30px] w-full">
         {CONFIG.certs.map((c, i) => (
           <div key={i} className="flex gap-[12px] md:gap-[16px] items-start p-[12px_16px] md:p-[18px_20px] border border-line rounded-[14px] bg-panel">
             <div className="flex-none w-[36px] h-[36px] md:w-[46px] md:h-[46px] rounded-full border-2 border-green text-green grid place-items-center font-mono font-semibold text-[9px] md:text-[11px]">
@@ -20,7 +20,7 @@ export default function CertsSlide({ isActive }) {
           </div>
         ))}
       </div>
-      
+
       {/* Spacer to prevent navigation overlap on mobile */}
       <div className="h-[90px] md:hidden shrink-0"></div>
     </Slide>
