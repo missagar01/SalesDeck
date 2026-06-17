@@ -2,9 +2,13 @@ import { useState, useRef, useEffect } from 'react';
 import Slide from '../Slide';
 
 export default function EscalationSlide({ isActive }) {
-  const [status, setStatus] = useState('idle'); // idle, onTimeStart, onTimeDone, lateStart, lateWarn, lateBreach, lateEscalate, lateResolved
+  const [activeTab, setActiveTab] = useState('dealers');
+  const [status, setStatus] = useState('idle');
+  const [activeStepIndex, setActiveStepIndex] = useState(-1);
+  const [progress, setProgress] = useState(0);
+
   const timers = useRef([]);
-  
+
   const clearTimers = () => {
     timers.current.forEach(clearTimeout);
     timers.current = [];
@@ -17,90 +21,71 @@ export default function EscalationSlide({ isActive }) {
   const reset = () => {
     clearTimers();
     setStatus('idle');
+    setActiveStepIndex(-1);
+    setProgress(0);
   };
 
-  const handleOnTime = () => {
-    if (status !== 'idle' && !status.includes('Done') && !status.includes('Resolved')) return;
+  useEffect(() => {
     reset();
-    setStatus('onTimeStart');
-    timers.current.push(setTimeout(() => setStatus('onTimeDone'), 1500));
-  };
+  }, [isActive, activeTab]);
 
-  const handleGoLate = () => {
-    if (status !== 'idle' && !status.includes('Done') && !status.includes('Resolved')) return;
+  const dealersData = [
+    { title: "Competitive Margin", icon: "💰" },
+    { title: "Reliable Supply", icon: "🚚" },
+    { title: "Flexible Order Sizes", icon: "📦" },
+    { title: "Brand Recall", icon: "⭐" }
+  ];
+
+  const consumerData = [
+    { title: "Superior Durability", icon: "🛡️" },
+    { title: "Minimal Joints", icon: "🔗" },
+    { title: "BIS Certified", icon: "✅" },
+    { title: "On-Time Delivery", icon: "⏱️" },
+    { title: "Cost Saving", icon: "💵" }
+  ];
+
+  const currentData = activeTab === 'dealers' ? dealersData : consumerData;
+
+  const handleRun = () => {
+    if (status !== 'idle') return;
     reset();
-    setStatus('lateStart');
-    timers.current.push(setTimeout(() => setStatus('lateWarn'), 1700));
-    timers.current.push(setTimeout(() => setStatus('lateBreach'), 3500));
-    timers.current.push(setTimeout(() => setStatus('lateEscalate'), 5000));
-    timers.current.push(setTimeout(() => setStatus('lateResolved'), 6600));
+    setStatus('running');
+
+    const n = currentData.length;
+
+    currentData.forEach((step, i) => {
+      timers.current.push(setTimeout(() => {
+        setActiveStepIndex(i);
+        const isMobile = window.innerWidth < 768;
+        const pct = isMobile ? (((i + 0.5) / n) * 100) : ((i / (n - 1)) * 100);
+        setProgress(pct);
+
+        if (i === n - 1) {
+          timers.current.push(setTimeout(() => {
+            setActiveStepIndex(n); // all done
+            setStatus('idle');
+            setProgress(100);
+          }, 1100));
+        }
+      }, i * 1300));
+    });
   };
 
-  const getBarStyles = () => {
-    if (status === 'idle') return { width: '0%', transition: 'none' };
-    if (status === 'onTimeStart' || status === 'onTimeDone') return { width: status === 'onTimeStart' ? '40%' : '40%', transition: 'width 1.4s ease' };
-    if (status.includes('late')) return { width: '100%', transition: 'width 3.4s linear' };
-    return { width: '0%', transition: 'none' };
-  };
-
-  const getBarClass = () => {
-    if (status === 'lateWarn') return 'bg-[linear-gradient(90deg,var(--color-amber),#ffb066)]';
-    if (status === 'lateBreach' || status === 'lateEscalate') return 'bg-[linear-gradient(90deg,var(--color-red),#ff8d86)]';
-    if (status === 'lateResolved') return 'bg-[linear-gradient(90deg,var(--color-green),#9be8b8)]';
-    return 'bg-[linear-gradient(90deg,var(--color-green),#9be8b8)]';
-  };
-
-  const getStatusText = () => {
-    switch (status) {
-      case 'idle': return { text: 'Waiting to start...', color: 'text-ink' };
-      case 'onTimeStart': return { text: 'In progress...', color: 'text-ink' };
-      case 'onTimeDone': return { text: 'Closed in 12 min — within TAT', color: 'text-green' };
-      case 'lateStart': return { text: 'In progress...', color: 'text-ink' };
-      case 'lateWarn': return { text: 'In progress...', color: 'text-ink' };
-      case 'lateBreach': return { text: 'TAT breached', color: 'text-red' };
-      case 'lateEscalate': return { text: 'Still pending — escalating', color: 'text-red' };
-      case 'lateResolved': return { text: 'HOD cleared it — task closed', color: 'text-green' };
-      default: return { text: 'Waiting to start...', color: 'text-ink' };
-    }
-  };
-  const getRungClass = (rungIndex) => {
-    const base = "flex gap-[10px] md:gap-[16px] items-center border border-line rounded-[14px] p-[8px_12px] md:p-[16px_18px] bg-panel opacity-45 transition-[.3s]";
-    if (rungIndex === 0) {
-      if (status === 'onTimeStart' || status === 'lateStart' || status === 'lateWarn') return base + " opacity-100 border-amber shadow-[0_0_22px_rgba(255,125,26,.18)]";
-      if (status === 'onTimeDone') return base + " opacity-100 border-green shadow-[0_0_22px_rgba(70,209,126,.18)]";
-    }
-    if (rungIndex === 1) {
-      if (status === 'lateBreach') return base + " opacity-100 border-red shadow-[0_0_22px_rgba(255,90,82,.2)]";
-    }
-    if (rungIndex === 2) {
-      if (status === 'lateEscalate') return base + " opacity-100 border-red shadow-[0_0_22px_rgba(255,90,82,.2)]";
-      if (status === 'lateResolved') return base + " opacity-100 border-green shadow-[0_0_22px_rgba(70,209,126,.18)]";
-    }
-    return base;
-  };
-
-  const statusText = getStatusText();
-  const isBusy = status !== 'idle' && !status.includes('Done') && !status.includes('Resolved');
+  const isBusy = status !== 'idle';
 
   return (
     <Slide isActive={isActive}>
       <div className="flex justify-between items-end gap-[16px] md:gap-[20px] flex-wrap">
         <div>
-          <div className="eyebrow">Time-bound tasks &middot; click to play</div>
-          <h2 className="text-[clamp(24px,3.4vw,44px)]">No task ever <span className="accent">goes quiet.</span></h2>
+          <div className="eyebrow">Value That Delivers &middot; click to play</div>
+          <h2>For Every <span className="accent">Stakeholder.</span></h2>
         </div>
         <div className="flex gap-[6px] md:gap-[10px] flex-nowrap">
           <button 
             className="font-mono text-[11px] md:text-[12.5px] tracking-[.06em] cursor-pointer border border-amber bg-amber text-[#1a0d02] font-semibold p-[6px_10px] md:p-[11px_16px] rounded-[10px] transition-[.18s] inline-flex items-center gap-[6px] md:gap-[8px] hover:brightness-105 disabled:opacity-40 disabled:cursor-not-allowed shrink-0"
-            onClick={handleOnTime} disabled={isBusy}
+            onClick={() => { reset(); setTimeout(handleRun, 60); }} disabled={isBusy}
           >
-            <span className="w-[6px] h-[6px] md:w-[8px] md:h-[8px] rounded-full bg-current shadow-[0_0_8px_currentColor]"></span>Finish on time
-          </button>
-          <button 
-            className="font-mono text-[11px] md:text-[12.5px] tracking-[.06em] cursor-pointer border border-line bg-panel2 text-ink p-[6px_10px] md:p-[11px_16px] rounded-[10px] transition-[.18s] inline-flex items-center gap-[6px] md:gap-[8px] hover:border-red hover:text-red disabled:opacity-40 disabled:cursor-not-allowed shrink-0"
-            onClick={handleGoLate} disabled={isBusy}
-          >
-            Watch a delay
+            <span className="w-[6px] h-[6px] md:w-[8px] md:h-[8px] rounded-full bg-current shadow-[0_0_8px_currentColor]"></span>Run timeline
           </button>
           <button 
             className="font-mono text-[11px] md:text-[12.5px] tracking-[.06em] cursor-pointer border border-line bg-panel2 text-ink p-[6px_10px] md:p-[11px_16px] rounded-[10px] transition-[.18s] inline-flex items-center gap-[6px] md:gap-[8px] hover:border-amber hover:text-amber shrink-0"
@@ -110,52 +95,101 @@ export default function EscalationSlide({ isActive }) {
           </button>
         </div>
       </div>
+      
+      <p className="lede mt-[16px]">Tailored benefits designed specifically for your success, whether you're a dealer or an end-to-end consumer.</p>
 
-      <div className="grid grid-cols-1 md:grid-cols-[1fr_1.05fr] gap-[10px] md:gap-[22px] mt-[12px] md:mt-[28px]">
-        <div className="border border-line rounded-[16px] bg-panel p-[12px_14px] md:p-[24px]">
-          <div className="font-mono text-[10px] md:text-[11px] tracking-[.16em] uppercase text-muted">Active task</div>
-          <div className="font-disp font-bold text-[18px] md:text-[22px] m-[8px_0_4px] leading-[1.15]">Confirm dispatch &mdash; Order #IC-1042</div>
-          <div className="text-muted text-[12.5px] md:text-[13.5px]">Owner: Dispatch desk &middot; TAT: 30 min</div>
+      {/* Tabs */}
+      <div className="flex gap-[16px] mt-[30px] border-b border-line pb-[12px]">
+        <button 
+          onClick={() => { if (!isBusy) setActiveTab('dealers') }}
+          className={`font-disp font-bold text-[16px] md:text-[22px] pb-[4px] px-[8px] md:px-[16px] transition-all relative ${activeTab === 'dealers' ? 'text-amber' : 'text-muted hover:text-ink'}`}
+        >
+          For Dealers
+          {activeTab === 'dealers' && (
+            <div className="absolute bottom-[-13px] left-0 right-0 h-[3px] bg-amber rounded-t-full"></div>
+          )}
+        </button>
+        <button 
+          onClick={() => { if (!isBusy) setActiveTab('consumers') }}
+          className={`font-disp font-bold text-[16px] md:text-[22px] pb-[4px] px-[8px] md:px-[16px] transition-all relative ${activeTab === 'consumers' ? 'text-amber' : 'text-muted hover:text-ink'}`}
+        >
+          For End-to-end Consumer
+          {activeTab === 'consumers' && (
+            <div className="absolute bottom-[-13px] left-0 right-0 h-[3px] bg-amber rounded-t-full"></div>
+          )}
+        </button>
+      </div>
+
+      {/* Horizontal Timeline Tracker */}
+      <div className="w-full mt-[60px] md:mt-[80px] shrink-0 overflow-x-visible md:overflow-x-auto md:pb-[10px]">
+        <div className="relative px-[4px] w-full md:min-w-[640px]">
           
-          <div className="mt-[10px] md:mt-[22px]">
-            <div className="flex justify-between font-mono text-[11px] md:text-[12px] text-muted mb-[8px]">
-              <span>Time used</span>
-              <span className={statusText.color}>{statusText.text}</span>
-            </div>
-            <div className="h-[10px] md:h-[12px] rounded-[8px] bg-[#0a0f14] border border-line overflow-hidden">
-              <i 
-                className={`block h-full w-0 ${getBarClass()}`}
-                style={getBarStyles()}
-              ></i>
-            </div>
+          {/* Background Track Line */}
+          <div className="absolute left-[14px] right-[14px] md:left-[44px] md:right-[44px] top-[14px] md:top-[32px] h-[3px] bg-line rounded-[3px]">
+             <div 
+               className="absolute left-0 top-0 bottom-0 rounded-[3px] bg-[linear-gradient(90deg,var(--color-amber),#ffb066)] transition-[width] duration-[1100ms] ease-in-out"
+               style={{ width: `${progress}%` }}
+             ></div>
           </div>
-        </div>
+          
+          {/* Moving Glowing Dot */}
+          <div className="absolute left-[14px] right-[14px] md:left-[44px] md:right-[44px] top-[14px] md:top-[32px] h-0 pointer-events-none z-30">
+            <div 
+              className={`absolute top-0 w-[10px] h-[10px] md:w-[18px] md:h-[18px] rounded-full bg-white transform -translate-x-1/2 -translate-y-1/2 transition-[left] duration-[1100ms] ease-in-out ${status !== 'idle' ? 'opacity-100' : 'opacity-0'} shadow-[0_0_16px_4px_var(--color-amber)]`}
+              style={{ left: `${progress}%` }}
+            ></div>
+          </div>
 
-        <div className="flex flex-col gap-[8px] md:gap-[14px]">
-          <div className={getRungClass(0)}>
-            <div className="flex-none w-[36px] h-[36px] md:w-[46px] md:h-[46px] rounded-[12px] grid place-items-center text-[18px] md:text-[22px] bg-panel2 border border-line">&#128100;</div>
-            <div>
-              <b className="font-disp text-[15px] md:text-[17px] block">Task owner</b>
-              <span className="text-muted text-[12px] md:text-[13px] leading-[1.4]">Assigned with a 30-minute clock running in the background.</span>
-            </div>
-          </div>
-          <div className={getRungClass(1)}>
-            <div className="flex-none w-[36px] h-[36px] md:w-[46px] md:h-[46px] rounded-[12px] grid place-items-center text-[18px] md:text-[22px] bg-panel2 border border-line">&#128222;</div>
-            <div>
-              <b className="font-disp text-[15px] md:text-[17px] block">Auto reminder & call</b>
-              <span className="text-muted text-[12px] md:text-[13px] leading-[1.4]">The moment the TAT breaches, the system pings and calls the owner to clear it.</span>
-            </div>
-          </div>
-          <div className={getRungClass(2)}>
-            <div className="flex-none w-[36px] h-[36px] md:w-[46px] md:h-[46px] rounded-[12px] grid place-items-center text-[18px] md:text-[22px] bg-panel2 border border-line">&#11014;&#65039;</div>
-            <div>
-              <b className="font-disp text-[15px] md:text-[17px] block">Escalated to HOD</b>
-              <span className="text-muted text-[12px] md:text-[13px] leading-[1.4]">Still pending? It jumps to the Head of Department with the full history.</span>
-            </div>
+          <div className="flex justify-between relative">
+          {currentData.map((step, i) => {
+            const isDone = i < activeStepIndex || activeStepIndex === currentData.length;
+            const isCurrent = i === activeStepIndex;
+
+            let ringClass = "border-line bg-panel text-muted";
+            let nmClass = "text-muted opacity-60";
+            let nodeScale = "scale-100";
+            let iconClass = "opacity-50";
+
+            if (isCurrent) {
+              ringClass = "border-amber bg-amber-soft text-amber shadow-[0_0_0_6px_var(--color-amber-soft),0_0_24px_rgba(255,125,26,.5)]";
+              nmClass = "text-amber opacity-100";
+              nodeScale = "scale-110";
+              iconClass = "opacity-100";
+            } else if (isDone) {
+              ringClass = "border-green text-green bg-panel";
+              nmClass = "text-green opacity-100";
+              nodeScale = "scale-100";
+              iconClass = "opacity-100 grayscale-[0.2]";
+            } else if (status === 'idle') {
+              // When completely idle, show them clearly but without highlight
+              ringClass = "border-line bg-panel text-ink";
+              nmClass = "text-ink opacity-100";
+              iconClass = "opacity-100";
+            }
+
+            return (
+              <div 
+                key={`${activeTab}-${i}`} 
+                className="flex flex-col items-center w-auto flex-1 md:flex-none md:w-[120px] md:shrink-0"
+              >
+                <div 
+                  className={`w-[28px] h-[28px] md:w-[64px] md:h-[64px] rounded-full flex items-center justify-center text-[12px] md:text-[24px] relative z-20 transition-all duration-300 border-2 ${ringClass} ${nodeScale}`}
+                >
+                  <span className={`transition-opacity duration-300 ${iconClass}`}>{step.icon}</span>
+                </div>
+                <div 
+                  className={`font-disp text-[8.5px] md:text-[13px] font-bold uppercase tracking-[0.05em] leading-tight mt-[12px] md:mt-[16px] text-center transition-all duration-300 ${nmClass}`}
+                >
+                  <span className={`block mb-1 text-[8px] md:text-[10px] ${isCurrent ? 'text-amber' : (isDone ? 'text-green' : (status === 'idle' ? 'text-amber opacity-80' : 'text-muted'))}`}>Step {i + 1}</span>
+                  {step.title}
+                </div>
+              </div>
+            );
+          })}
           </div>
         </div>
       </div>
-      
+
       {/* Spacer to prevent navigation overlap on mobile */}
       <div className="h-[90px] md:hidden shrink-0"></div>
     </Slide>

@@ -1,12 +1,12 @@
 export const CONFIG = {
-  brand: "IRONCORE",
-  company: "Ironcore Steel & TMT Pvt. Ltd.",
-  tagline: "Engineered to hold the structures India is built on.",
+  brand: "SOURABH",
+  company: "Sourabh Rolling Mills Pvt Ltd",
+  tagline: "Strength and Trust define us",
   location: "Raipur, Chhattisgarh",
-  founded: 2008,
-  rep: "your sales team",
-  email: "sales@ironcore.example",
-  phone: "+91 00000 00000",
+  founded: 2000,
+  website: "www.pankajgroup.co.in",
+  email: "mkt@sgartmt.com",
+  phone: "+91 6266919126, 7723020092, 7723020091",
 
   scale: [
     { num: "\u20B91,240 Cr", lab: "Annual turnover", sub: "FY 2024\u201325" },

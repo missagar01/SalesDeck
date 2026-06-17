@@ -1,18 +1,18 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #0b1015;
-  --color-panel: #121b24;
-  --color-panel2: #18242f;
-  --color-line: #26384a;
-  --color-ink: #eaf2fa;
-  --color-muted: #7f93a6;
-  --color-amber: #ff7d1a;
-  --color-amber-soft: rgba(255,125,26,.14);
-  --color-cyan: #33d6c8;
-  --color-green: #46d17e;
-  --color-red: #ff5a52;
-  --color-red-soft: rgba(255,90,82,.12);
+  --color-bg: #ffffff;
+  --color-panel: #f8fafc;
+  --color-panel2: #f1f5f9;
+  --color-line: #e2e8f0;
+  --color-ink: #0f172a;
+  --color-muted: #64748b;
+  --color-amber: #dc2626;
+  --color-amber-soft: rgba(220, 38, 38, 0.14);
+  --color-cyan: #0ea5e9;
+  --color-green: #16a34a;
+  --color-red: #ef4444;
+  --color-red-soft: rgba(239, 68, 68, 0.12);
 
   --font-disp: 'Saira', system-ui, sans-serif;
   --font-body: 'Inter', system-ui, sans-serif;
@@ -39,9 +39,9 @@
     pointer-events: none;
     opacity: 0.5;
     background:
-      linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px) 0 0/44px 44px,
-      linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px) 0 0/44px 44px,
-      radial-gradient(900px 500px at 80% -10%, rgba(255,125,26,.10), transparent 60%);
+      linear-gradient(rgba(0,0,0,.04) 1px,transparent 1px) 0 0/44px 44px,
+      linear-gradient(90deg,rgba(0,0,0,.04) 1px,transparent 1px) 0 0/44px 44px,
+      radial-gradient(900px 500px at 80% -10%, rgba(220,38,38,.10), transparent 60%);
   }
 
   .eyebrow {
@@ -148,4 +148,28 @@
 
 .animate-slideIn {
   animation: slideIn .35s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.animate-slideUp {
+  animation: slideUp .5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade {
+  animation: fadeIn .5s ease forwards;
 }
