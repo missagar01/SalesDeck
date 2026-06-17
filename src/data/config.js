@@ -4,7 +4,7 @@ export const CONFIG = {
   tagline: "Strength and Trust define us",
   location: "Raipur, Chhattisgarh",
   founded: 2005,
-  email: "mkt@sgargroup.co",
+  email: "mkt@sagargroup.co",
   phone: "+91 6266919126, 7723020092, 7723020091",
 
   scale: [
