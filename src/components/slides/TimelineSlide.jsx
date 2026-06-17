@@ -17,7 +17,7 @@ export default function TimelineSlide({ isActive }) {
       points: [
         <><b className="font-semibold text-ink">7</b> Furnaces</>,
         <><b className="font-semibold text-ink">2</b> CCM</>,
-        <><b className="font-semibold text-ink">6</b> Pipemills</>,
+        <><b className="font-semibold text-ink">8</b> Pipemills</>,
         <>Sagar Pipe Mills <b className="font-semibold text-ink">Launch</b></>
       ]
     },

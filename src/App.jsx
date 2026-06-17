@@ -7,16 +7,19 @@ import CapacitySlide from './components/slides/CapacitySlide';
 import CertsSlide from './components/slides/CertsSlide';
 import PillarsSlide from './components/slides/PillarsSlide';
 import DeptMapSlide from './components/slides/DeptMapSlide';
+import TimeBoundTasksSlide from './components/slides/TimeBoundTasksSlide';
 import EscalationSlide from './components/slides/EscalationSlide';
 import FlowSlide from './components/slides/FlowSlide';
 import QualitySlide from './components/slides/QualitySlide';
+import SmartInventorySlide from './components/slides/SmartInventorySlide';
+import DepartmentSlide from './components/slides/DepartmentSlide';
 import DistributionSlide from './components/slides/DistributionSlide';
 import ManagementSystemSlide from './components/slides/ManagementSystemSlide';
 import CloseSlide from './components/slides/CloseSlide';
 import OurClientSlide from './components/slides/OurClientSlide';
 import ThankYouSlide from './components/slides/ThankYouSlide';
 
-const TOTAL_SLIDES = 14;
+const TOTAL_SLIDES = 17;
 
 function App() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -46,13 +49,16 @@ function App() {
         <CertsSlide isActive={activeIndex === 4} />
         <PillarsSlide isActive={activeIndex === 5} />
         <DeptMapSlide isActive={activeIndex === 6} />
-        <EscalationSlide isActive={activeIndex === 7} />
-        <QualitySlide isActive={activeIndex === 8} />
-        <DistributionSlide isActive={activeIndex === 9} />
-        <ManagementSystemSlide isActive={activeIndex === 10} />
-        <CloseSlide isActive={activeIndex === 11} />
-        <OurClientSlide isActive={activeIndex === 12} />
-        <ThankYouSlide isActive={activeIndex === 13} />
+        <TimeBoundTasksSlide isActive={activeIndex === 7} />
+        <EscalationSlide isActive={activeIndex === 8} />
+        <QualitySlide isActive={activeIndex === 9} />
+        <SmartInventorySlide isActive={activeIndex === 10} />
+        <DepartmentSlide isActive={activeIndex === 11} />
+        <DistributionSlide isActive={activeIndex === 12} />
+        <ManagementSystemSlide isActive={activeIndex === 13} />
+        <CloseSlide isActive={activeIndex === 14} />
+        <OurClientSlide isActive={activeIndex === 15} />
+        <ThankYouSlide isActive={activeIndex === 16} />
       </div>
 
       <div className="fixed top-[20px] right-[24px] font-mono text-[12px] text-muted tracking-[.1em] z-50">

@@ -28,18 +28,10 @@ export default function ThankYouSlide({ isActive }) {
         <div className="flex flex-col gap-[10px] md:gap-[12px] font-disp font-bold text-[14px] md:text-[18px] text-[#1a202c] mb-[25px] md:mb-[35px]">
           <div className="flex items-center justify-center gap-[10px]">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-[18px] h-[18px] md:w-[20px] md:h-[20px]">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="2" y1="12" x2="22" y2="12"></line>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-            </svg>
-            <span>www.pankajgroup.co.in</span>
-          </div>
-          <div className="flex items-center justify-center gap-[10px]">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-[18px] h-[18px] md:w-[20px] md:h-[20px]">
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
               <polyline points="22,6 12,13 2,6"></polyline>
             </svg>
-            <span>mkt@sgartmt.com</span>
+            <span>mkt@sgargroup.co</span>
           </div>
           <div className="flex items-center justify-center gap-[10px]">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-[18px] h-[18px] md:w-[20px] md:h-[20px]">

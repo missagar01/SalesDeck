@@ -4,8 +4,7 @@ export const CONFIG = {
   tagline: "Strength and Trust define us",
   location: "Raipur, Chhattisgarh",
   founded: 2005,
-  website: "www.pankajgroup.co.in",
-  email: "mkt@sgartmt.com",
+  email: "mkt@sgargroup.co",
   phone: "+91 6266919126, 7723020092, 7723020091",
 
   scale: [

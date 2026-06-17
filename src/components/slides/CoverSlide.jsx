@@ -31,7 +31,6 @@ export default function CoverSlide({ isActive }) {
             <div>BASE &middot; <span className="text-ink">{CONFIG.location}</span></div>
           </div>
           <div className="flex flex-col md:flex-row gap-[6px] md:gap-[24px] justify-center">
-            <div>WEB &middot; <span className="text-ink">{CONFIG.website}</span></div>
             <div>EMAIL &middot; <span className="text-ink">{CONFIG.email}</span></div>
           </div>
           <div className="flex flex-col md:flex-row gap-[6px] md:gap-[24px] justify-center">
