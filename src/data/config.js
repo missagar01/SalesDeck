@@ -3,7 +3,7 @@ export const CONFIG = {
   company: "Sourabh Rolling Mills Pvt Ltd",
   tagline: "Strength and Trust define us",
   location: "Raipur, Chhattisgarh",
-  founded: 2000,
+  founded: 2005,
   website: "www.pankajgroup.co.in",
   email: "mkt@sgartmt.com",
   phone: "+91 6266919126, 7723020092, 7723020091",
