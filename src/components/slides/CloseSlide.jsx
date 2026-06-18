@@ -138,7 +138,7 @@ export default function CloseSlide({ isActive }) {
             <div 
               key={i} 
               className={`flex flex-col md:flex-row items-center md:items-start flex-1 ${isActive ? 'animate-slideUp' : 'opacity-0'}`} 
-              style={{ animationDelay: `${i * 1000 + 400}ms`, animationFillMode: 'both' }}
+              style={{ animationDelay: `${i * 150 + 200}ms`, animationFillMode: 'both' }}
             >
               <div className="flex flex-col items-center text-center w-full md:w-[120px] xl:w-[150px] mx-auto">
                 {/* Icon Circle */}
@@ -162,7 +162,7 @@ export default function CloseSlide({ isActive }) {
               {i < reasons.length - 1 && (
                 <div 
                   className={`hidden md:flex items-center justify-center pt-[35px] text-[#d1d1d1] flex-shrink-0 mx-[5px] lg:mx-[15px] ${isActive ? 'animate-fade' : 'opacity-0'}`}
-                  style={{ animationDelay: `${(i + 1) * 1000 + 200}ms`, animationFillMode: 'both', animationDuration: '600ms' }}
+                  style={{ animationDelay: `${i * 150 + 275}ms`, animationFillMode: 'both', animationDuration: '400ms' }}
                 >
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-[18px] h-[18px] lg:w-[24px] lg:h-[24px]">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -174,6 +174,8 @@ export default function CloseSlide({ isActive }) {
         </div>
       </div>
 
+      {/* Spacer to prevent navigation overlap on mobile */}
+      <div className="h-[90px] md:hidden shrink-0"></div>
     </Slide>
   );
 }

@@ -122,10 +122,10 @@ export default function EscalationSlide({ isActive }) {
 
       {/* Horizontal Timeline Tracker */}
       <div className="w-full mt-[60px] md:mt-[80px] shrink-0 overflow-x-visible md:overflow-x-auto md:pb-[10px]">
-        <div className="relative px-[4px] w-full md:min-w-[640px]">
+        <div className="relative px-[4px] pt-[16px] w-full md:min-w-[640px]">
           
           {/* Background Track Line */}
-          <div className="absolute left-[14px] right-[14px] md:left-[44px] md:right-[44px] top-[14px] md:top-[32px] h-[3px] bg-line rounded-[3px]">
+          <div className="absolute left-[14px] right-[14px] md:left-[44px] md:right-[44px] top-[30px] md:top-[48px] h-[3px] bg-line rounded-[3px]">
              <div 
                className="absolute left-0 top-0 bottom-0 rounded-[3px] bg-[linear-gradient(90deg,var(--color-amber),#ffb066)] transition-[width] duration-[1100ms] ease-in-out"
                style={{ width: `${progress}%` }}
@@ -133,7 +133,7 @@ export default function EscalationSlide({ isActive }) {
           </div>
           
           {/* Moving Glowing Dot */}
-          <div className="absolute left-[14px] right-[14px] md:left-[44px] md:right-[44px] top-[14px] md:top-[32px] h-0 pointer-events-none z-30">
+          <div className="absolute left-[14px] right-[14px] md:left-[44px] md:right-[44px] top-[30px] md:top-[48px] h-0 pointer-events-none z-30">
             <div 
               className={`absolute top-0 w-[10px] h-[10px] md:w-[18px] md:h-[18px] rounded-full bg-white transform -translate-x-1/2 -translate-y-1/2 transition-[left] duration-[1100ms] ease-in-out ${status !== 'idle' ? 'opacity-100' : 'opacity-0'} shadow-[0_0_16px_4px_var(--color-amber)]`}
               style={{ left: `${progress}%` }}
@@ -175,7 +175,7 @@ export default function EscalationSlide({ isActive }) {
                 <div 
                   className={`w-[28px] h-[28px] md:w-[64px] md:h-[64px] rounded-full flex items-center justify-center text-[12px] md:text-[24px] relative z-20 transition-all duration-300 border-2 ${ringClass} ${nodeScale}`}
                 >
-                  <span className={`transition-opacity duration-300 ${iconClass}`}>{step.icon}</span>
+                  <span className={`flex items-center justify-center leading-none select-none transition-opacity duration-300 ${iconClass}`}>{step.icon}</span>
                 </div>
                 <div 
                   className={`font-disp text-[8.5px] md:text-[13px] font-bold uppercase tracking-[0.05em] leading-tight mt-[12px] md:mt-[16px] text-center transition-all duration-300 ${nmClass}`}

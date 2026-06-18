@@ -137,7 +137,7 @@ export default function TimeBoundTasksSlide({ isActive }) {
         </div>
       </div>
       
-      <div className="flex flex-col md:flex-row gap-[12px] md:gap-[30px] mt-[24px] md:mt-[60px] h-auto md:h-[320px]">
+      <div className="flex flex-col md:flex-row gap-[12px] md:gap-[30px] mt-[16px] md:mt-[36px] lg:mt-[48px] h-auto md:h-[320px]">
         
         {/* Left Panel - Active Task */}
         <div className="flex-[3] border border-line bg-panel rounded-[12px] md:rounded-[16px] p-[16px] md:p-[32px] flex flex-col justify-center relative">
@@ -171,35 +171,77 @@ export default function TimeBoundTasksSlide({ isActive }) {
         <div className="flex-[2] flex flex-col gap-[8px] md:gap-[16px]">
           
           {/* Box 1: Task Owner */}
-          <div className={`flex-1 border rounded-[12px] md:rounded-[16px] p-[12px] md:p-[20px] flex gap-[12px] md:gap-[16px] items-center transition-all duration-300 ${activeStage >= 0 ? 'border-amber bg-amber-soft opacity-100' : 'border-line bg-panel2 opacity-50'}`}>
-            <div className={`w-[36px] h-[36px] md:w-[48px] md:h-[48px] rounded-[8px] md:rounded-[10px] flex items-center justify-center text-[16px] md:text-[20px] shrink-0 ${activeStage >= 0 ? 'bg-[#ff7d1a]/20 text-[#ff7d1a]' : 'bg-line text-muted'}`}>
+          <div className={`flex-1 border rounded-[12px] md:rounded-[16px] p-[12px] md:p-[20px] flex gap-[12px] md:gap-[16px] items-center transition-all duration-300 ${
+            status === 'idle'
+              ? 'border-line bg-panel opacity-100 shadow-sm'
+              : activeStage >= 0
+              ? 'border-amber bg-amber-soft opacity-100 shadow-md'
+              : 'border-line bg-panel2 opacity-60'
+          }`}>
+            <div className={`w-[36px] h-[36px] md:w-[48px] md:h-[48px] rounded-[8px] md:rounded-[10px] flex items-center justify-center text-[16px] md:text-[20px] shrink-0 transition-all duration-300 ${
+              status !== 'idle' && activeStage >= 0 ? 'bg-[#ff7d1a]/20 text-[#ff7d1a]' : 'bg-line text-muted'
+            }`}>
               👤
             </div>
             <div>
-              <div className={`font-bold text-[13px] md:text-[16px] mb-[2px] md:mb-[4px] ${activeStage >= 0 ? 'text-amber' : 'text-ink'}`}>Task owner</div>
-              <div className="text-muted text-[10px] md:text-[13px] leading-snug">Assigned with a 30-minute clock running in the background.</div>
+              <div className={`font-bold text-[13px] md:text-[16px] mb-[2px] md:mb-[4px] transition-colors duration-300 ${
+                status !== 'idle' && activeStage >= 0 ? 'text-amber' : 'text-ink'
+              }`}>
+                Task owner
+              </div>
+              <div className="text-muted text-[10px] md:text-[13px] leading-snug">
+                Assigned with a 30-minute clock running in the background.
+              </div>
             </div>
           </div>
           
           {/* Box 2: Auto reminder & call */}
-          <div className={`flex-1 border rounded-[12px] md:rounded-[16px] p-[12px] md:p-[20px] flex gap-[12px] md:gap-[16px] items-center transition-all duration-300 ${activeStage >= 1 ? 'border-red-500 bg-red-soft opacity-100' : 'border-line bg-panel2 opacity-50'}`}>
-            <div className={`w-[36px] h-[36px] md:w-[48px] md:h-[48px] rounded-[8px] md:rounded-[10px] flex items-center justify-center text-[16px] md:text-[20px] shrink-0 ${activeStage >= 1 ? 'bg-red-500/20 text-red-500' : 'bg-line text-muted'}`}>
+          <div className={`flex-1 border rounded-[12px] md:rounded-[16px] p-[12px] md:p-[20px] flex gap-[12px] md:gap-[16px] items-center transition-all duration-300 ${
+            status === 'idle'
+              ? 'border-line bg-panel opacity-100 shadow-sm'
+              : activeStage >= 1
+              ? 'border-red-500 bg-red-soft opacity-100 shadow-md'
+              : 'border-line bg-panel2 opacity-60'
+          }`}>
+            <div className={`w-[36px] h-[36px] md:w-[48px] md:h-[48px] rounded-[8px] md:rounded-[10px] flex items-center justify-center text-[16px] md:text-[20px] shrink-0 transition-all duration-300 ${
+              status !== 'idle' && activeStage >= 1 ? 'bg-red-500/20 text-red-500' : 'bg-line text-muted'
+            }`}>
               📞
             </div>
             <div>
-              <div className={`font-bold text-[13px] md:text-[16px] mb-[2px] md:mb-[4px] ${activeStage >= 1 ? 'text-red-500' : 'text-ink'}`}>Auto reminder & call</div>
-              <div className="text-muted text-[10px] md:text-[13px] leading-snug">The moment the TAT breaches, the system pings and calls the owner to clear it.</div>
+              <div className={`font-bold text-[13px] md:text-[16px] mb-[2px] md:mb-[4px] transition-colors duration-300 ${
+                status !== 'idle' && activeStage >= 1 ? 'text-red-500' : 'text-ink'
+              }`}>
+                Auto reminder & call
+              </div>
+              <div className="text-muted text-[10px] md:text-[13px] leading-snug">
+                The moment the TAT breaches, the system pings and calls the owner to clear it.
+              </div>
             </div>
           </div>
           
           {/* Box 3: Escalated to HOD */}
-          <div className={`flex-1 border rounded-[12px] md:rounded-[16px] p-[12px] md:p-[20px] flex gap-[12px] md:gap-[16px] items-center transition-all duration-300 ${activeStage >= 2 ? 'border-[#3b82f6] bg-[#3b82f6]/10 opacity-100' : 'border-line bg-panel2 opacity-50'}`}>
-            <div className={`w-[36px] h-[36px] md:w-[48px] md:h-[48px] rounded-[8px] md:rounded-[10px] flex items-center justify-center text-[16px] md:text-[20px] shrink-0 ${activeStage >= 2 ? 'bg-[#3b82f6]/20 text-[#3b82f6]' : 'bg-line text-muted'}`}>
+          <div className={`flex-1 border rounded-[12px] md:rounded-[16px] p-[12px] md:p-[20px] flex gap-[12px] md:gap-[16px] items-center transition-all duration-300 ${
+            status === 'idle'
+              ? 'border-line bg-panel opacity-100 shadow-sm'
+              : activeStage >= 2
+              ? 'border-[#3b82f6] bg-[#3b82f6]/10 opacity-100 shadow-md'
+              : 'border-line bg-panel2 opacity-60'
+          }`}>
+            <div className={`w-[36px] h-[36px] md:w-[48px] md:h-[48px] rounded-[8px] md:rounded-[10px] flex items-center justify-center text-[16px] md:text-[20px] shrink-0 transition-all duration-300 ${
+              status !== 'idle' && activeStage >= 2 ? 'bg-[#3b82f6]/20 text-[#3b82f6]' : 'bg-line text-muted'
+            }`}>
               ⬆️
             </div>
             <div>
-              <div className={`font-bold text-[13px] md:text-[16px] mb-[2px] md:mb-[4px] ${activeStage >= 2 ? 'text-[#3b82f6]' : 'text-ink'}`}>Escalated to HOD</div>
-              <div className="text-muted text-[10px] md:text-[13px] leading-snug">Still pending? It jumps to the Head of Department with the full history.</div>
+              <div className={`font-bold text-[13px] md:text-[16px] mb-[2px] md:mb-[4px] transition-colors duration-300 ${
+                status !== 'idle' && activeStage >= 2 ? 'text-[#3b82f6]' : 'text-ink'
+              }`}>
+                Escalated to HOD
+              </div>
+              <div className="text-muted text-[10px] md:text-[13px] leading-snug">
+                Still pending? It jumps to the Head of Department with the full history.
+              </div>
             </div>
           </div>
           

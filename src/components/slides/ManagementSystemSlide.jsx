@@ -8,10 +8,10 @@ export default function ManagementSystemSlide({ isActive }) {
       <p className="lede">One cohesive platform seamlessly connecting every department.</p>
 
       {/* Main Diagram Container */}
-      <div className="relative w-full max-w-[1000px] mx-auto mt-[10px] md:mt-[40px] flex items-center justify-center h-[300px] md:h-[420px] overflow-hidden">
+      <div className="relative w-full max-w-[1000px] mx-auto mt-[10px] md:mt-[20px] flex items-center justify-center h-[300px] md:h-[360px] overflow-hidden">
         
         {/* Core Assembly Wrapper - scales down to fit perfectly without overlapping footer */}
-        <div className="relative w-[220px] h-[100px] md:w-[550px] md:h-[240px] scale-[0.8] md:scale-[0.85] flex items-center justify-center">
+        <div className="relative w-[220px] h-[100px] md:w-[550px] md:h-[240px] scale-[0.8] md:scale-[0.7] flex items-center justify-center">
           
           {/* ERP Block (z-30) */}
           <div 
@@ -56,14 +56,14 @@ export default function ManagementSystemSlide({ isActive }) {
           </div>
 
           {/* Bottom: CRM Points */}
-          <div className={`absolute top-[100%] mt-[16px] md:mt-[40px] left-[50%] md:left-[50%] -translate-x-1/2 w-max transition-all duration-[1000ms] ease-out ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[-20px]'}`} style={{ transitionDelay: '1000ms' }}>
+          <div className={`absolute top-[100%] mt-[16px] md:mt-[24px] left-[50%] md:left-[50%] -translate-x-1/2 w-max transition-all duration-[1000ms] ease-out ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[-20px]'}`} style={{ transitionDelay: '1000ms' }}>
             <ul className="space-y-[6px] md:space-y-[16px] text-[8px] sm:text-[10px] md:text-[16px] text-ink font-medium text-left">
               <li className="flex items-center gap-[4px] md:gap-[8px]"><span className="w-[3px] h-[3px] md:w-[6px] md:h-[6px] bg-[#d32f2f] rounded-full shrink-0"></span> Client Analytics</li>
               <li className="flex items-center gap-[4px] md:gap-[8px]"><span className="w-[3px] h-[3px] md:w-[6px] md:h-[6px] bg-[#d32f2f] rounded-full shrink-0"></span> Order Management</li>
               <li className="flex items-center gap-[4px] md:gap-[8px]"><span className="w-[3px] h-[3px] md:w-[6px] md:h-[6px] bg-[#d32f2f] rounded-full shrink-0"></span> After-sales service</li>
             </ul>
             {/* Line pointing down from CRM */}
-            <div className="absolute left-[50%] -translate-x-1/2 top-[-15px] md:top-[-40px] h-[10px] md:h-[30px] w-[2px] md:w-[4px] bg-[#d32f2f]"></div>
+            <div className="absolute left-[50%] -translate-x-1/2 top-[-15px] md:top-[-24px] h-[10px] md:h-[18px] w-[2px] md:w-[4px] bg-[#d32f2f]"></div>
           </div>
 
           {/* Right: Inventory Tracking Points */}

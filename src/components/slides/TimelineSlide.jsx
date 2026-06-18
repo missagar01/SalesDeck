@@ -49,12 +49,12 @@ export default function TimelineSlide({ isActive }) {
       </p>
       
       {/* The Timeline Diagram */}
-      <div className="relative mt-[60px] md:mt-[80px] w-full max-w-[1000px] mx-auto h-[350px] md:h-[400px]">
+      <div className="relative mt-[16px] md:mt-[24px] w-full max-w-[1000px] mx-auto h-[280px] md:h-[320px]">
         
         {/* Horizontal Timeline Line */}
-        <div className="absolute top-[100px] left-[2%] right-[2%] h-[2px] bg-[#d1d1d1] z-0"></div>
+        <div className="absolute top-[100px] left-[2%] right-[2%] h-[2px] bg-[#1a1a1a] z-0"></div>
         {/* Arrow at the end of the line */}
-        <div className="absolute top-[96px] right-[2%] w-0 h-0 border-y-[5px] border-y-transparent border-l-[8px] border-l-[#d1d1d1] z-0"></div>
+        <div className="absolute top-[96px] right-[2%] w-0 h-0 border-y-[5px] border-y-transparent border-l-[8px] border-l-[#1a1a1a] z-0"></div>
 
         <div className="flex justify-between absolute top-0 left-0 right-0 h-full z-10">
           {milestones.map((m, i) => (
@@ -68,7 +68,7 @@ export default function TimelineSlide({ isActive }) {
                   </div>
                   
                   {/* Small line from circle to triangle */}
-                  <div className="absolute top-[140px] md:top-[150px] w-[1px] h-[30px] bg-[#a0a0a0]"></div>
+                  <div className="absolute top-[140px] md:top-[150px] w-[1px] h-[30px] bg-[#1a1a1a]"></div>
                   
                   {/* Triangle */}
                   <div className="absolute top-[170px] md:top-[180px] w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-[#d32f2f]"></div>
@@ -93,10 +93,10 @@ export default function TimelineSlide({ isActive }) {
                   </div>
                   
                   {/* Continuous vertical line */}
-                  <div className="absolute top-[50px] w-[1px] h-[120px] md:h-[130px] bg-[#a0a0a0] z-10"></div>
+                  <div className="absolute top-[50px] w-[1px] h-[120px] md:h-[130px] bg-[#1a1a1a] z-10"></div>
                   
                   {/* Grey Dot on Timeline */}
-                  <div className="absolute top-[96px] w-[10px] h-[10px] rounded-full bg-[#a0a0a0] z-20"></div>
+                  <div className="absolute top-[96px] w-[10px] h-[10px] rounded-full bg-[#1a1a1a] z-20"></div>
 
                   {/* Triangle */}
                   <div className="absolute top-[170px] md:top-[180px] w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-[#d32f2f]"></div>

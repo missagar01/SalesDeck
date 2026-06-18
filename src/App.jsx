@@ -5,6 +5,7 @@ import TimelineSlide from './components/slides/TimelineSlide';
 import StatsSlide from './components/slides/StatsSlide';
 import CapacitySlide from './components/slides/CapacitySlide';
 import CertsSlide from './components/slides/CertsSlide';
+import ProductImageSlide from './components/slides/ProductImageSlide';
 import PillarsSlide from './components/slides/PillarsSlide';
 import DeptMapSlide from './components/slides/DeptMapSlide';
 import TimeBoundTasksSlide from './components/slides/TimeBoundTasksSlide';
@@ -19,7 +20,7 @@ import CloseSlide from './components/slides/CloseSlide';
 import OurClientSlide from './components/slides/OurClientSlide';
 import ThankYouSlide from './components/slides/ThankYouSlide';
 
-const TOTAL_SLIDES = 17;
+const TOTAL_SLIDES = 18;
 
 function App() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -47,61 +48,69 @@ function App() {
         <StatsSlide isActive={activeIndex === 2} />
         <CapacitySlide isActive={activeIndex === 3} />
         <CertsSlide isActive={activeIndex === 4} />
-        <PillarsSlide isActive={activeIndex === 5} />
-        <DeptMapSlide isActive={activeIndex === 6} />
-        <TimeBoundTasksSlide isActive={activeIndex === 7} />
-        <EscalationSlide isActive={activeIndex === 8} />
-        <QualitySlide isActive={activeIndex === 9} />
-        <SmartInventorySlide isActive={activeIndex === 10} />
-        <DepartmentSlide isActive={activeIndex === 11} />
-        <DistributionSlide isActive={activeIndex === 12} />
-        <ManagementSystemSlide isActive={activeIndex === 13} />
-        <CloseSlide isActive={activeIndex === 14} />
-        <OurClientSlide isActive={activeIndex === 15} />
-        <ThankYouSlide isActive={activeIndex === 16} />
+        <ProductImageSlide isActive={activeIndex === 5} />
+        <PillarsSlide isActive={activeIndex === 6} />
+        <DeptMapSlide isActive={activeIndex === 7} />
+        <TimeBoundTasksSlide isActive={activeIndex === 8} />
+        <EscalationSlide isActive={activeIndex === 9} />
+        <QualitySlide isActive={activeIndex === 10} />
+        <SmartInventorySlide isActive={activeIndex === 11} />
+        <DepartmentSlide isActive={activeIndex === 12} />
+        <DistributionSlide isActive={activeIndex === 13} />
+        <ManagementSystemSlide isActive={activeIndex === 14} />
+        <CloseSlide isActive={activeIndex === 15} />
+        <OurClientSlide isActive={activeIndex === 16} />
+        <ThankYouSlide isActive={activeIndex === 17} />
       </div>
 
-      <div className="fixed top-[20px] right-[24px] font-mono text-[12px] text-muted tracking-[.1em] z-50">
-        <b className="text-ink">{String(activeIndex + 1).padStart(2, '0')}</b> / {String(TOTAL_SLIDES).padStart(2, '0')}
-      </div>
 
-      <div className="fixed bottom-[22px] left-0 right-0 flex items-center justify-center gap-[16px] z-50">
-        <button 
+
+      {/* ── FLOATING NAV (above footer) ── */}
+      <div className="deck-nav-float" aria-label="Slide navigation">
+        <button
           onClick={() => go(activeIndex - 1)}
-          aria-label="Previous"
-          className="w-[42px] h-[42px] rounded-full border border-line bg-[rgba(255,255,255,.85)] backdrop-blur-[6px] text-ink cursor-pointer text-[18px] transition-[.18s] hover:border-amber hover:text-amber"
+          aria-label="Previous slide"
+          className="deck-nav-btn"
         >
           &#8249;
         </button>
-        <div className="flex gap-[7px]">
+
+        <div className="deck-dots-pill">
           {Array.from({ length: TOTAL_SLIDES }).map((_, i) => (
-            <i 
+            <button
               key={i}
+              role="tab"
+              aria-selected={i === activeIndex}
+              aria-label={`Go to slide ${i + 1}`}
               onClick={() => go(i)}
-              className={`h-[8px] rounded-[5px] bg-line cursor-pointer transition-[.2s] ${i === activeIndex ? 'w-[22px] bg-amber' : 'w-[8px]'}`}
-            ></i>
+              className={`deck-dot${i === activeIndex ? ' deck-dot--active' : ''}`}
+            />
           ))}
         </div>
-        <button 
+
+        <button
           onClick={() => go(activeIndex + 1)}
-          aria-label="Next"
-          className="w-[42px] h-[42px] rounded-full border border-line bg-[rgba(255,255,255,.85)] backdrop-blur-[6px] text-ink cursor-pointer text-[18px] transition-[.18s] hover:border-amber hover:text-amber"
+          aria-label="Next slide"
+          className="deck-nav-btn"
         >
           &#8250;
         </button>
       </div>
 
-      <div className="fixed bottom-[6px] left-0 right-0 text-center font-mono text-[9px] md:text-[10px] text-muted tracking-[.08em] z-50">
-        Powered by{' '}
-        <a 
-          href="https://www.botivate.in" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="text-amber hover:underline transition-all"
-        >
-          botivate
-        </a>
-      </div>
+      {/* ── FOOTER BAR ── */}
+      <footer className="deck-footer">
+        <span className="deck-footer__credit">
+          Powered by&nbsp;
+          <a
+            href="https://www.botivate.in"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="deck-footer__link"
+          >
+            Botivate
+          </a>
+        </span>
+      </footer>
     </>
   );
 }
