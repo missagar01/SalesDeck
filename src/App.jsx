@@ -165,20 +165,7 @@ function App() {
         </button>
       </div>
 
-      {/* ── FOOTER BAR ── */}
-      <footer className="deck-footer">
-        <span className="deck-footer__credit">
-          Powered by&nbsp;
-          <a
-            href="https://www.botivate.in"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="deck-footer__link"
-          >
-            Botivate
-          </a>
-        </span>
-      </footer>
+
     </>
   );
 }

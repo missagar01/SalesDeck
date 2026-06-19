@@ -5,7 +5,7 @@ export const CONFIG = {
   location: "Raipur, Chhattisgarh",
   founded: 2005,
   email: "mkt@sagargroup.co",
-  phone: "+91 6266919126, 7723020092, 7723020091",
+  phone: "+916266919126, +917723020092, +917723020091",
 
   scale: [
     { num: "\u20B91,240 Cr", lab: "Annual turnover", sub: "FY 2024\u201325" },
