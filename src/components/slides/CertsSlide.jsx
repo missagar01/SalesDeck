@@ -1,7 +1,7 @@
 import { CONFIG } from '../../data/config';
 import Slide from '../Slide';
 import pipeImg from '../../assets/sagar_ms_pipes.png';
-import stripeImg from '../../assets/ms_stripes_coils.png';
+import stripeImg from '../../assets/ms_stripes_coils.jpeg';
 import billetImg from '../../assets/ms_billets.png';
 
 export default function CertsSlide({ isActive }) {
@@ -67,25 +67,25 @@ export default function CertsSlide({ isActive }) {
         ))}
       </div>
 
-      <div className="mt-[24px] md:mt-[48px] flex flex-row items-center justify-center gap-[4px] sm:gap-[8px] md:gap-[24px] w-full whitespace-nowrap">
-        <div className="bg-[linear-gradient(180deg,var(--color-panel),var(--color-panel2))] border border-line rounded-full px-[10px] py-[6px] md:px-[20px] md:py-[12px] font-disp font-semibold text-[10px] sm:text-[11px] md:text-[16px] text-amber text-center shadow-md">
-          Minimal joints per bundle
+      <div className="mt-[24px] md:mt-[48px] flex flex-row items-center justify-center gap-[3px] sm:gap-[8px] md:gap-[24px] w-full whitespace-nowrap">
+        <div className="bg-[linear-gradient(180deg,var(--color-panel),var(--color-panel2))] border border-line rounded-full px-[8px] py-[4px] sm:px-[12px] sm:py-[6px] md:px-[20px] md:py-[12px] font-disp font-semibold text-[9px] sm:text-[11px] md:text-[16px] text-amber text-center shadow-md">
+          Minimal Joints
         </div>
         
         <div className="text-amber flex-shrink-0">
-          <svg className="w-[12px] h-[12px] md:w-[24px] md:h-[24px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          <svg className="w-[10px] h-[10px] sm:w-[12px] sm:h-[12px] md:w-[24px] md:h-[24px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </div>
 
-        <div className="bg-[linear-gradient(180deg,var(--color-panel),var(--color-panel2))] border border-line rounded-full px-[10px] py-[6px] md:px-[20px] md:py-[12px] font-disp font-semibold text-[10px] sm:text-[11px] md:text-[16px] text-amber text-center shadow-md">
-          Higher durability
+        <div className="bg-[linear-gradient(180deg,var(--color-panel),var(--color-panel2))] border border-line rounded-full px-[8px] py-[4px] sm:px-[12px] sm:py-[6px] md:px-[20px] md:py-[12px] font-disp font-semibold text-[9px] sm:text-[11px] md:text-[16px] text-amber text-center shadow-md">
+          Higher Durability
         </div>
 
         <div className="text-amber flex-shrink-0">
-          <svg className="w-[12px] h-[12px] md:w-[24px] md:h-[24px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          <svg className="w-[10px] h-[10px] sm:w-[12px] sm:h-[12px] md:w-[24px] md:h-[24px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </div>
 
-        <div className="bg-[linear-gradient(180deg,var(--color-panel),var(--color-panel2))] border border-line rounded-full px-[10px] py-[6px] md:px-[20px] md:py-[12px] font-disp font-semibold text-[10px] sm:text-[11px] md:text-[16px] text-amber text-center shadow-md">
-          Reduced leakage risk
+        <div className="bg-[linear-gradient(180deg,var(--color-panel),var(--color-panel2))] border border-line rounded-full px-[8px] py-[4px] sm:px-[12px] sm:py-[6px] md:px-[20px] md:py-[12px] font-disp font-semibold text-[9px] sm:text-[11px] md:text-[16px] text-amber text-center shadow-md">
+          Reduced Leakage
         </div>
       </div>
     </Slide>

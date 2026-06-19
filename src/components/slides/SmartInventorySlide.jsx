@@ -9,6 +9,13 @@ export default function SmartInventorySlide({ isActive }) {
   const [indentNum, setIndentNum] = useState('—');
 
   const timers = useRef([]);
+  const logRef = useRef(null);
+
+  useEffect(() => {
+    if (logRef.current) {
+      logRef.current.scrollTop = logRef.current.scrollHeight;
+    }
+  }, [logs]);
 
   const clearTimers = () => {
     timers.current.forEach(clearTimeout);
@@ -92,15 +99,15 @@ export default function SmartInventorySlide({ isActive }) {
           </div>
           <h2>Stock runs low? <span className="accent">It refills itself.</span></h2>
         </div>
-        <div className="flex gap-[6px] md:gap-[10px] flex-wrap md:flex-nowrap pb-[4px]">
+        <div className="flex gap-[4px] sm:gap-[6px] md:gap-[10px] flex-nowrap pb-[4px] w-full md:w-auto justify-between md:justify-start">
           <button 
-            className="font-mono text-[11px] md:text-[12.5px] tracking-[.06em] cursor-pointer border border-amber bg-amber text-[#1a0d02] font-semibold p-[6px_10px] md:p-[11px_16px] rounded-[10px] transition-[.18s] inline-flex items-center gap-[6px] md:gap-[8px] hover:brightness-105 disabled:opacity-40 disabled:cursor-not-allowed shrink-0"
+            className="font-mono text-[9px] sm:text-[11px] md:text-[12.5px] tracking-[.06em] cursor-pointer border border-amber bg-amber text-[#1a0d02] font-semibold p-[5px_8px] sm:p-[6px_10px] md:p-[11px_16px] rounded-[10px] transition-[.18s] inline-flex items-center gap-[4px] md:gap-[8px] hover:brightness-105 disabled:opacity-40 disabled:cursor-not-allowed shrink-0"
             onClick={() => { reset(); setTimeout(handleRun, 60); }} disabled={isBusy}
           >
-            <span className="w-[6px] h-[6px] md:w-[8px] md:h-[8px] rounded-full bg-current shadow-[0_0_8px_currentColor]"></span>Trigger a refill
+            <span className="w-[5px] h-[5px] md:w-[8px] md:h-[8px] rounded-full bg-current shadow-[0_0_8px_currentColor]"></span>Trigger a refill
           </button>
           <button 
-            className="font-mono text-[11px] md:text-[12.5px] tracking-[.06em] cursor-pointer border border-line bg-panel2 text-ink p-[6px_10px] md:p-[11px_16px] rounded-[10px] transition-[.18s] inline-flex items-center gap-[6px] md:gap-[8px] hover:border-amber hover:text-amber shrink-0"
+            className="font-mono text-[9px] sm:text-[11px] md:text-[12.5px] tracking-[.06em] cursor-pointer border border-line bg-panel2 text-ink p-[5px_8px] sm:p-[6px_10px] md:p-[11px_16px] rounded-[10px] transition-[.18s] inline-flex items-center gap-[4px] md:gap-[8px] hover:border-amber hover:text-amber shrink-0"
             onClick={reset}
           >
             Reset
@@ -113,7 +120,7 @@ export default function SmartInventorySlide({ isActive }) {
         <div className="relative px-[4px] w-full">
           
           {/* Background Track Line (Desktop) */}
-          <div className="hidden md:block absolute left-[32px] right-[32px] top-[28px] h-[3px] bg-line rounded-[3px] z-0">
+          <div className="hidden md:block absolute md:left-[32px] md:right-[32px] lg:left-[40px] lg:right-[40px] top-[28px] h-[3px] bg-line rounded-[3px] z-0">
              <div 
                className="absolute left-0 top-0 bottom-0 rounded-[3px] bg-[linear-gradient(90deg,var(--color-amber),#ffb066)] transition-[width] duration-[1100ms] ease-in-out"
                style={{ width: `${progress}%` }}
@@ -121,7 +128,7 @@ export default function SmartInventorySlide({ isActive }) {
           </div>
           
           {/* Moving Glowing Dot (Desktop) */}
-          <div className="hidden md:block absolute left-[32px] right-[32px] top-[28px] h-0 pointer-events-none z-30">
+          <div className="hidden md:block absolute md:left-[32px] md:right-[32px] lg:left-[40px] lg:right-[40px] top-[28px] h-0 pointer-events-none z-30">
             <div 
               className={`absolute top-0 w-[14px] h-[14px] rounded-full bg-white transform -translate-x-1/2 -translate-y-1/2 transition-[left] duration-[1100ms] ease-in-out ${status !== 'idle' ? 'opacity-100' : 'opacity-0'} shadow-[0_0_16px_4px_var(--color-amber)]`}
               style={{ left: `${progress}%` }}
@@ -157,7 +164,7 @@ export default function SmartInventorySlide({ isActive }) {
             return (
               <div 
                 key={i} 
-                className="flex flex-col items-center w-auto flex-1 md:flex-none md:w-[80px] md:shrink-0 relative"
+                className="flex flex-col items-center w-auto flex-1 md:flex-none md:w-[64px] lg:w-[80px] md:shrink-0 relative"
               >
                 {/* Mobile Track Line Fragment */}
                 {i !== 4 && i !== 9 && (
@@ -184,38 +191,40 @@ export default function SmartInventorySlide({ isActive }) {
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row gap-[16px] mt-[30px] md:mt-[50px]">
+      <div className="flex flex-col md:flex-row gap-[12px] md:gap-[16px] mt-[20px] md:mt-[50px]">
         {/* System Activity Log */}
-        <div className="flex-[2] border border-line bg-panel rounded-[12px] p-[16px] md:p-[20px] h-[180px] md:h-[200px] overflow-hidden flex flex-col relative">
-          <div className="text-muted font-mono text-[10px] md:text-[12px] uppercase tracking-[0.1em] mb-[12px]">System Activity Log</div>
-          <div className="flex-1 overflow-y-auto flex flex-col justify-end">
-            <div className="flex flex-col gap-[8px]">
+        <div className="flex-[2] border border-line bg-panel rounded-[12px] p-[12px] md:p-[20px] h-[110px] md:h-[200px] overflow-hidden flex flex-col relative">
+          <div className="text-muted font-mono text-[9px] md:text-[12px] uppercase tracking-[0.1em] mb-[6px] md:mb-[12px]">System Activity Log</div>
+          <div ref={logRef} className="h-[70px] md:h-[148px] overflow-y-auto pr-[4px]">
+            <div className="flex flex-col gap-[6px] md:gap-[8px]">
               {logs.map((log, i) => (
-                <div key={i} className="flex gap-[12px] text-[12px] md:text-[14px] font-mono animate-slideIn" style={{ animationDuration: '300ms' }}>
+                <div key={i} className="flex gap-[8px] md:gap-[12px] text-[11px] md:text-[14px] font-mono animate-slideIn" style={{ animationDuration: '300ms' }}>
                   <span className="text-muted shrink-0">[{log.time}]</span>
                   <span className="text-ink">{log.text}</span>
                 </div>
               ))}
               {status === 'idle' && logs.length === 0 && (
-                <div className="text-muted italic text-[12px] md:text-[14px]">Waiting for system trigger...</div>
+                <div className="text-muted italic text-[11px] md:text-[14px]">Waiting for system trigger...</div>
               )}
             </div>
           </div>
-          <div className="absolute bottom-0 left-0 right-0 h-[20px] bg-gradient-to-t from-panel to-transparent pointer-events-none"></div>
+          <div className="absolute bottom-0 left-0 right-0 h-[15px] bg-gradient-to-t from-panel to-transparent pointer-events-none"></div>
         </div>
 
         {/* What the store sees */}
-        <div className="flex-[1] border border-line bg-panel2 rounded-[12px] p-[16px] md:p-[24px] flex flex-col justify-center">
-          <div className="text-muted font-mono text-[10px] md:text-[12px] uppercase tracking-[0.1em] mb-[8px]">What the store sees</div>
-          <div className="text-[20px] md:text-[28px] font-bold text-ink mb-[8px]">
+        <div className="flex-[1] border border-line bg-panel2 rounded-[12px] p-[12px] md:p-[24px] flex flex-col justify-center min-h-[90px] md:min-h-0">
+          <div className="text-muted font-mono text-[9px] md:text-[12px] uppercase tracking-[0.1em] mb-[4px] md:mb-[8px]">What the store sees</div>
+          <div className="text-[16px] sm:text-[20px] md:text-[28px] font-bold text-ink mb-[4px] md:mb-[8px] leading-tight">
             Indent #{indentNum}
           </div>
-          <div className="text-muted text-[12px] md:text-[14px] leading-snug">
+          <div className="text-muted text-[11px] md:text-[14px] leading-snug">
             {status === 'idle' && logs.length === 0 ? "Press \"Trigger a refill\" to watch raw material restock end to end." : "Processing restock order automatically."}
           </div>
         </div>
       </div>
 
+      {/* Spacer to prevent navigation overlap on mobile */}
+      <div className="h-[100px] md:hidden shrink-0"></div>
     </Slide>
   );
 }

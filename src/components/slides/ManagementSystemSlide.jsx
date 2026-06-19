@@ -11,7 +11,7 @@ export default function ManagementSystemSlide({ isActive }) {
       <div className="relative w-full max-w-[1000px] mx-auto mt-[10px] md:mt-[20px] flex items-center justify-center h-[300px] md:h-[360px] overflow-hidden">
         
         {/* Core Assembly Wrapper - scales down to fit perfectly without overlapping footer */}
-        <div className="relative w-[220px] h-[100px] md:w-[550px] md:h-[240px] scale-[0.48] min-[360px]:scale-[0.55] min-[400px]:scale-[0.65] min-[480px]:scale-[0.75] sm:scale-[0.8] md:scale-[0.7] flex items-center justify-center">
+        <div className="relative w-[220px] h-[100px] md:w-[550px] md:h-[240px] scale-[0.75] sm:scale-[0.85] md:scale-[0.62] lg:scale-[0.7] flex items-center justify-center">
           
           {/* ERP Block (z-30) */}
           <div 
@@ -40,11 +40,11 @@ export default function ManagementSystemSlide({ isActive }) {
           {/* --- Text & Arrows (Anchored to the Assembly) --- */}
 
           {/* Left: ERP Points */}
-          <div className={`absolute right-[100%] mr-[8px] md:mr-[40px] top-1/2 -translate-y-1/2 w-max text-left transition-all duration-[1000ms] ease-out ${isActive ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-[20px]'}`} style={{ transitionDelay: '800ms' }}>
-            <ul className="space-y-[6px] md:space-y-[16px] text-[8px] sm:text-[10px] md:text-[16px] text-ink font-medium">
-              <li className="flex items-center gap-[4px] md:gap-[8px]"><span className="w-[3px] h-[3px] md:w-[6px] md:h-[6px] bg-[#2f2f2f] rounded-full shrink-0"></span> Operations Management</li>
-              <li className="flex items-center gap-[4px] md:gap-[8px]"><span className="w-[3px] h-[3px] md:w-[6px] md:h-[6px] bg-[#2f2f2f] rounded-full shrink-0"></span> Production Monitoring</li>
-              <li className="flex items-center gap-[4px] md:gap-[8px]"><span className="w-[3px] h-[3px] md:w-[6px] md:h-[6px] bg-[#2f2f2f] rounded-full shrink-0"></span> Purchase &amp; Store</li>
+          <div className={`absolute right-[100%] mr-[8px] md:mr-[40px] top-1/2 -translate-y-1/2 w-[88px] sm:w-[110px] md:w-max text-left transition-all duration-[1000ms] ease-out ${isActive ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-[20px]'}`} style={{ transitionDelay: '800ms' }}>
+            <ul className="space-y-[6px] md:space-y-[16px] text-[11px] sm:text-[12px] md:text-[16px] text-ink font-medium leading-[1.25]">
+              <li className="flex items-start md:items-center gap-[4px] md:gap-[8px]"><span className="w-[4px] h-[4px] md:w-[6px] md:h-[6px] bg-[#2f2f2f] rounded-full shrink-0 mt-[5px] md:mt-0"></span> Operations Management</li>
+              <li className="flex items-start md:items-center gap-[4px] md:gap-[8px]"><span className="w-[4px] h-[4px] md:w-[6px] md:h-[6px] bg-[#2f2f2f] rounded-full shrink-0 mt-[5px] md:mt-0"></span> Production Monitoring</li>
+              <li className="flex items-start md:items-center gap-[4px] md:gap-[8px]"><span className="w-[4px] h-[4px] md:w-[6px] md:h-[6px] bg-[#2f2f2f] rounded-full shrink-0 mt-[5px] md:mt-0"></span> Purchase &amp; Store</li>
             </ul>
             {/* Arrow pointing to ERP text */}
             <div className="absolute right-[-20px] md:right-[-60px] top-[-20px] md:top-[-45px] w-[30px] md:w-[80px]">
@@ -57,21 +57,21 @@ export default function ManagementSystemSlide({ isActive }) {
 
           {/* Bottom: CRM Points */}
           <div className={`absolute top-[100%] mt-[16px] md:mt-[24px] left-[50%] md:left-[50%] -translate-x-1/2 w-max transition-all duration-[1000ms] ease-out ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[-20px]'}`} style={{ transitionDelay: '1000ms' }}>
-            <ul className="space-y-[6px] md:space-y-[16px] text-[8px] sm:text-[10px] md:text-[16px] text-ink font-medium text-left">
-              <li className="flex items-center gap-[4px] md:gap-[8px]"><span className="w-[3px] h-[3px] md:w-[6px] md:h-[6px] bg-[#d32f2f] rounded-full shrink-0"></span> Client Analytics</li>
-              <li className="flex items-center gap-[4px] md:gap-[8px]"><span className="w-[3px] h-[3px] md:w-[6px] md:h-[6px] bg-[#d32f2f] rounded-full shrink-0"></span> Order Management</li>
-              <li className="flex items-center gap-[4px] md:gap-[8px]"><span className="w-[3px] h-[3px] md:w-[6px] md:h-[6px] bg-[#d32f2f] rounded-full shrink-0"></span> After-sales service</li>
+            <ul className="space-y-[6px] md:space-y-[16px] text-[11px] sm:text-[12px] md:text-[16px] text-ink font-medium text-left leading-[1.25]">
+              <li className="flex items-center gap-[4px] md:gap-[8px]"><span className="w-[4px] h-[4px] md:w-[6px] md:h-[6px] bg-[#d32f2f] rounded-full shrink-0"></span> Client Analytics</li>
+              <li className="flex items-center gap-[4px] md:gap-[8px]"><span className="w-[4px] h-[4px] md:w-[6px] md:h-[6px] bg-[#d32f2f] rounded-full shrink-0"></span> Order Management</li>
+              <li className="flex items-center gap-[4px] md:gap-[8px]"><span className="w-[4px] h-[4px] md:w-[6px] md:h-[6px] bg-[#d32f2f] rounded-full shrink-0"></span> After-sales service</li>
             </ul>
             {/* Line pointing down from CRM */}
             <div className="absolute left-[50%] -translate-x-1/2 top-[-15px] md:top-[-24px] h-[10px] md:h-[18px] w-[2px] md:w-[4px] bg-[#d32f2f]"></div>
           </div>
 
           {/* Right: Inventory Tracking Points */}
-          <div className={`absolute left-[100%] ml-[8px] md:ml-[30px] top-1/2 -translate-y-1/2 w-max text-left transition-all duration-[1000ms] ease-out ${isActive ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-[-20px]'}`} style={{ transitionDelay: '1200ms' }}>
-            <ul className="space-y-[6px] md:space-y-[16px] text-[8px] sm:text-[10px] md:text-[16px] text-ink font-medium">
-              <li className="flex items-center gap-[4px] md:gap-[8px]"><span className="w-[3px] h-[3px] md:w-[6px] md:h-[6px] bg-[#757575] rounded-full shrink-0"></span> Real-time Stock Monitoring</li>
-              <li className="flex items-center gap-[4px] md:gap-[8px]"><span className="w-[3px] h-[3px] md:w-[6px] md:h-[6px] bg-[#757575] rounded-full shrink-0"></span> Batch Tracking</li>
-              <li className="flex items-center gap-[4px] md:gap-[8px]"><span className="w-[3px] h-[3px] md:w-[6px] md:h-[6px] bg-[#757575] rounded-full shrink-0"></span> Location Management</li>
+          <div className={`absolute left-[100%] ml-[8px] md:ml-[30px] top-1/2 -translate-y-1/2 w-[94px] sm:w-[115px] md:w-max text-left transition-all duration-[1000ms] ease-out ${isActive ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-[-20px]'}`} style={{ transitionDelay: '1200ms' }}>
+            <ul className="space-y-[6px] md:space-y-[16px] text-[11px] sm:text-[12px] md:text-[16px] text-ink font-medium leading-[1.25]">
+              <li className="flex items-start md:items-center gap-[4px] md:gap-[8px]"><span className="w-[4px] h-[4px] md:w-[6px] md:h-[6px] bg-[#757575] rounded-full shrink-0 mt-[5px] md:mt-0"></span> Real-time Stock Monitoring</li>
+              <li className="flex items-start md:items-center gap-[4px] md:gap-[8px]"><span className="w-[4px] h-[4px] md:w-[6px] md:h-[6px] bg-[#757575] rounded-full shrink-0 mt-[5px] md:mt-0"></span> Batch Tracking</li>
+              <li className="flex items-start md:items-center gap-[4px] md:gap-[8px]"><span className="w-[4px] h-[4px] md:w-[6px] md:h-[6px] bg-[#757575] rounded-full shrink-0 mt-[5px] md:mt-0"></span> Location Management</li>
             </ul>
             {/* Arrow pointing right from Inventory */}
             <div className="absolute left-[-20px] md:left-[-70px] top-[-20px] md:top-[-45px] w-[30px] md:w-[80px]">

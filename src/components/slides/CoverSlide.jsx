@@ -21,20 +21,20 @@ export default function CoverSlide({ isActive }) {
             <span className="accent">{CONFIG.company}</span>
           </h1>
 
-          <p className="lede text-center mx-auto mt-[8px] md:mt-[15px]">{CONFIG.tagline}</p>
+          <p className="lede text-center mx-auto mt-[8px] md:mt-[15px] font-bold text-black">{CONFIG.tagline}</p>
         </div>
 
         {/* Details — bottom on mobile */}
-        <div className="flex flex-col items-center gap-[8px] md:gap-[8px] font-mono text-[11px] md:text-[13px] text-muted tracking-[.04em] text-center">
+        <div className="flex flex-col items-center gap-[8px] md:gap-[8px] font-mono text-[11px] md:text-[13px] text-black font-bold tracking-[.04em] text-center">
           <div className="flex flex-row gap-[16px] md:gap-[24px] justify-center">
-            <div>FOUNDED &middot; <span className="text-ink">{CONFIG.founded}</span></div>
-            <div>BASE &middot; <span className="text-ink">{CONFIG.location}</span></div>
+            <div>FOUNDED &middot; <span>{CONFIG.founded}</span></div>
+            <div>BASE &middot; <span>{CONFIG.location}</span></div>
           </div>
           <div className="flex flex-col md:flex-row gap-[6px] md:gap-[24px] justify-center">
-            <div>EMAIL &middot; <span className="text-ink">{CONFIG.email}</span></div>
+            <div>EMAIL &middot; <span>{CONFIG.email}</span></div>
           </div>
           <div className="flex flex-col md:flex-row gap-[6px] md:gap-[24px] justify-center">
-            <div>PHONE &middot; <span className="text-ink">{CONFIG.phone}</span></div>
+            <div>PHONE &middot; <span>{CONFIG.phone}</span></div>
           </div>
         </div>
 

@@ -24,10 +24,61 @@ const TOTAL_SLIDES = 18;
 
 function App() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const go = (n) => {
     setActiveIndex(Math.max(0, Math.min(TOTAL_SLIDES - 1, n)));
   };
+
+  const AUTO_PLAY_INTERVAL = 6000;
+
+  useEffect(() => {
+    if (!isPlaying) return;
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % TOTAL_SLIDES);
+    }, AUTO_PLAY_INTERVAL);
+    return () => clearInterval(timer);
+  }, [isPlaying, activeIndex]);
+
+  useEffect(() => {
+    let startX = 0;
+    let startY = 0;
+
+    const handleTouchStart = (e) => {
+      if (e.touches.length === 1) {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+      }
+    };
+
+    const handleTouchEnd = (e) => {
+      if (e.changedTouches.length === 1 && startX !== 0) {
+        const diffX = e.changedTouches[0].clientX - startX;
+        const diffY = e.changedTouches[0].clientY - startY;
+
+        const thresholdX = 60;
+        const thresholdY = 50;
+
+        if (Math.abs(diffX) > thresholdX && Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffY) < thresholdY) {
+          if (diffX < 0) {
+            go(activeIndex + 1);
+          } else {
+            go(activeIndex - 1);
+          }
+        }
+        startX = 0;
+        startY = 0;
+      }
+    };
+
+    window.addEventListener('touchstart', handleTouchStart, { passive: true });
+    window.addEventListener('touchend', handleTouchEnd, { passive: true });
+
+    return () => {
+      window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, [activeIndex]);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -94,6 +145,23 @@ function App() {
           className="deck-nav-btn"
         >
           &#8250;
+        </button>
+
+        <button
+          onClick={() => setIsPlaying(!isPlaying)}
+          aria-label={isPlaying ? "Pause auto play" : "Start auto play"}
+          className={`deck-nav-btn ${isPlaying ? 'text-amber border-amber' : ''}`}
+        >
+          {isPlaying ? (
+            <svg viewBox="0 0 24 24" fill="currentColor" className="w-[14px] h-[14px]">
+              <rect x="6" y="4" width="4" height="16" rx="1" />
+              <rect x="14" y="4" width="4" height="16" rx="1" />
+            </svg>
+          ) : (
+            <svg viewBox="0 0 24 24" fill="currentColor" className="w-[14px] h-[14px] ml-[2px]">
+              <polygon points="6,4 20,12 6,20" />
+            </svg>
+          )}
         </button>
       </div>
 

@@ -1,5 +1,5 @@
 import Slide from '../Slide';
-import logoImg from '../../assets/Logo.png';
+import logoImg from '../../assets/tlogo.png';
 
 export default function DeptMapSlide({ isActive }) {
   const challenges = [

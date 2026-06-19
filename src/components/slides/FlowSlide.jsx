@@ -105,17 +105,17 @@ export default function FlowSlide({
           <div className="eyebrow">{eyebrow || activeFlow.eyebrow}</div>
           <h2 className="text-[clamp(24px,3.4vw,44px)]" dangerouslySetInnerHTML={{ __html: title || activeFlow.title }}></h2>
         </div>
-        <div className="flex gap-[6px] md:gap-[10px] flex-nowrap">
+        <div className="flex gap-[4px] sm:gap-[6px] md:gap-[10px] flex-nowrap w-full md:w-auto justify-between md:justify-start">
           <button
-            className="font-mono text-[11px] md:text-[12.5px] tracking-[.06em] cursor-pointer border border-amber bg-amber text-[#1a0d02] font-semibold p-[6px_10px] md:p-[11px_16px] rounded-[10px] transition-[.18s] inline-flex items-center gap-[6px] md:gap-[8px] hover:brightness-105 disabled:opacity-40 disabled:cursor-not-allowed shrink-0"
+            className="font-mono text-[9px] sm:text-[11px] md:text-[12.5px] tracking-[.06em] cursor-pointer border border-amber bg-amber text-[#1a0d02] font-semibold p-[5px_8px] sm:p-[6px_10px] md:p-[11px_16px] rounded-[10px] transition-[.18s] inline-flex items-center gap-[4px] md:gap-[8px] hover:brightness-105 disabled:opacity-40 disabled:cursor-not-allowed shrink-0"
             onClick={() => { reset(); setTimeout(() => play(false), 60); }} disabled={isBusy}
           >
-            <span className="w-[6px] h-[6px] md:w-[8px] md:h-[8px] rounded-full bg-current shadow-[0_0_8px_currentColor]"></span>{activeFlow.runLabel || 'Run'}
+            <span className="w-[5px] h-[5px] md:w-[8px] md:h-[8px] rounded-full bg-current shadow-[0_0_8px_currentColor]"></span>{activeFlow.runLabel || 'Run'}
           </button>
 
           {(activeFlow.altSteps || activeFlow.altLabel) && (
             <button
-              className="font-mono text-[11px] md:text-[12.5px] tracking-[.06em] cursor-pointer border border-line bg-panel2 text-ink p-[6px_10px] md:p-[11px_16px] rounded-[10px] transition-[.18s] inline-flex items-center gap-[6px] md:gap-[8px] hover:border-red hover:text-red disabled:opacity-40 disabled:cursor-not-allowed shrink-0"
+              className="font-mono text-[9px] sm:text-[11px] md:text-[12.5px] tracking-[.06em] cursor-pointer border border-line bg-panel2 text-ink p-[5px_8px] sm:p-[6px_10px] md:p-[11px_16px] rounded-[10px] transition-[.18s] inline-flex items-center gap-[4px] md:gap-[8px] hover:border-red hover:text-red disabled:opacity-40 disabled:cursor-not-allowed shrink-0"
               onClick={() => { reset(); setTimeout(() => play(true), 60); }} disabled={isBusy || !activeFlow.altSteps}
             >
               {activeFlow.altLabel || 'Simulate delay'}
@@ -123,7 +123,7 @@ export default function FlowSlide({
           )}
 
           <button
-            className="font-mono text-[11px] md:text-[12.5px] tracking-[.06em] cursor-pointer border border-line bg-panel2 text-ink p-[6px_10px] md:p-[11px_16px] rounded-[10px] transition-[.18s] inline-flex items-center gap-[6px] md:gap-[8px] hover:border-amber hover:text-amber shrink-0"
+            className="font-mono text-[9px] sm:text-[11px] md:text-[12.5px] tracking-[.06em] cursor-pointer border border-line bg-panel2 text-ink p-[5px_8px] sm:p-[6px_10px] md:p-[11px_16px] rounded-[10px] transition-[.18s] inline-flex items-center gap-[4px] md:gap-[8px] hover:border-amber hover:text-amber shrink-0"
             onClick={() => reset()}
           >
             Reset
