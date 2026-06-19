@@ -12,7 +12,7 @@ export default function ThankYouSlide({ isActive }) {
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-95"
           style={{ backgroundImage: `url(${thankYouBgImg})` }}
         />
-        <div className="absolute inset-0 backdrop-blur-[2px] bg-white/30" />
+        <div className="absolute inset-0 backdrop-blur-[10px] bg-white/30" />
       </div>
 
       <div className={`flex flex-col items-center w-full text-center relative z-10 ${isActive ? 'animate-slideUp' : 'opacity-0'}`} style={{ animationDelay: '200ms', animationFillMode: 'both' }}>
