@@ -53,7 +53,7 @@ export default function PillarsSlide({ isActive }) {
             </div>
             <div className={`flex items-center gap-[6px] md:gap-[10px] bg-panel border border-line rounded-full px-[10px] py-[2px] md:px-[16px] md:py-[6px] shadow-sm z-10 ${isActive ? 'animate-slideIn' : 'opacity-0'}`} style={{ animationDelay: '1200ms', animationFillMode: 'both' }}>
               <span className="w-[6px] h-[6px] md:w-[10px] md:h-[10px] rounded-full bg-amber shadow-[0_0_0_2px_var(--color-amber-soft)] md:shadow-[0_0_0_3px_var(--color-amber-soft)]"></span>
-              <span className="text-[10px] md:text-[14px] font-medium text-ink">6 Pipe Mills</span>
+              <span className="text-[10px] md:text-[14px] font-medium text-ink">8 Pipe Mills</span>
             </div>
           </div>
         </div>

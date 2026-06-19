@@ -11,7 +11,7 @@ export default function ManagementSystemSlide({ isActive }) {
       <div className="relative w-full max-w-[1000px] mx-auto mt-[10px] md:mt-[20px] flex items-center justify-center h-[300px] md:h-[360px] overflow-hidden">
         
         {/* Core Assembly Wrapper - scales down to fit perfectly without overlapping footer */}
-        <div className="relative w-[220px] h-[100px] md:w-[550px] md:h-[240px] scale-[0.8] md:scale-[0.7] flex items-center justify-center">
+        <div className="relative w-[220px] h-[100px] md:w-[550px] md:h-[240px] scale-[0.48] min-[360px]:scale-[0.55] min-[400px]:scale-[0.65] min-[480px]:scale-[0.75] sm:scale-[0.8] md:scale-[0.7] flex items-center justify-center">
           
           {/* ERP Block (z-30) */}
           <div 
