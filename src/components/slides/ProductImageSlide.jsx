@@ -31,10 +31,10 @@ export default function ProductImageSlide({ isActive }) {
   ];
 
   return (
-    <Slide isActive={isActive}>
+    <Slide isActive={isActive} center>
       <div className="eyebrow">Product Gallery</div>
       <h2>Visualizing our <span className="accent">Product Portfolio.</span></h2>
-      <p className="lede !text-[13px] md:!text-[15px] !mt-[4px] md:!mt-[8px] leading-snug">
+      <p className="lede text-[13px]! md:text-[15px]! mt-[4px]! md:mt-[8px]! leading-snug">
         High-quality steel products manufactured with precision and certified to meet the highest industry standards.
       </p>
 
@@ -53,7 +53,7 @@ export default function ProductImageSlide({ isActive }) {
             }}
           >
             {/* Image Container */}
-            <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100 shrink-0 border-b border-line">
+            <div className="relative aspect-16/6 md:aspect-16/10 w-full overflow-hidden bg-slate-100 shrink-0 border-b border-line">
               <img
                 src={p.img}
                 alt={p.title}
@@ -69,7 +69,7 @@ export default function ProductImageSlide({ isActive }) {
             </div>
 
             {/* Label Container */}
-            <div className="p-[6px] md:p-[8px] flex-grow flex flex-col justify-center bg-[linear-gradient(180deg,var(--color-panel),var(--color-panel2))] min-w-0">
+            <div className="p-[6px] md:p-[8px] grow flex flex-col justify-center bg-[linear-gradient(180deg,var(--color-panel),var(--color-panel2))] min-w-0">
               <h3 className="font-disp font-bold text-[11px] md:text-[13px] text-ink leading-tight text-center truncate group-hover:text-amber transition-colors duration-200">
                 {p.title}
               </h3>
@@ -81,13 +81,13 @@ export default function ProductImageSlide({ isActive }) {
       {/* Lightbox Modal */}
       {selectedProduct && (
         <div 
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-md animate-fade"
+          className="fixed inset-0 z-100 flex items-center justify-center bg-black/80 backdrop-blur-md animate-fade"
           onClick={() => setSelectedProduct(null)}
         >
           {/* Close button */}
           <button 
             onClick={() => setSelectedProduct(null)}
-            className="absolute top-4 right-4 z-[110] bg-white/10 hover:bg-white/20 text-white p-2 rounded-full transition-colors duration-200"
+            className="absolute top-4 right-4 z-110 bg-white/10 hover:bg-white/20 text-white p-2 rounded-full transition-colors duration-200"
             aria-label="Close modal"
           >
             <X size={24} />

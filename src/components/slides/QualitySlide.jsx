@@ -71,7 +71,7 @@ export default function QualitySlide({ isActive }) {
   const isBusy = status !== 'idle';
 
   return (
-    <Slide isActive={isActive}>
+    <Slide isActive={isActive} center>
       <div className="flex justify-between items-end gap-[16px] md:gap-[20px] flex-wrap">
         <div>
           <div className="eyebrow">Live system &middot; click to play</div>
@@ -100,7 +100,7 @@ export default function QualitySlide({ isActive }) {
           {/* Background Track Line */}
           <div className="absolute left-[14px] right-[14px] md:left-[44px] md:right-[44px] top-[30px] md:top-[48px] h-[3px] bg-line rounded-[3px]">
              <div 
-               className="absolute left-0 top-0 bottom-0 rounded-[3px] bg-[linear-gradient(90deg,var(--color-amber),#ffb066)] transition-[width] duration-[1100ms] ease-in-out"
+               className="absolute left-0 top-0 bottom-0 rounded-[3px] bg-[linear-gradient(90deg,var(--color-amber),#ffb066)] transition-[width] duration-1100 ease-in-out"
                style={{ width: `${progress}%` }}
              ></div>
           </div>
@@ -108,7 +108,7 @@ export default function QualitySlide({ isActive }) {
           {/* Moving Glowing Dot */}
           <div className="absolute left-[14px] right-[14px] md:left-[44px] md:right-[44px] top-[30px] md:top-[48px] h-0 pointer-events-none z-30">
             <div 
-              className={`absolute top-0 w-[10px] h-[10px] md:w-[18px] md:h-[18px] rounded-full bg-white transform -translate-x-1/2 -translate-y-1/2 transition-[left] duration-[1100ms] ease-in-out ${status !== 'idle' ? 'opacity-100' : 'opacity-0'} shadow-[0_0_16px_4px_var(--color-amber)]`}
+              className={`absolute top-0 w-[10px] h-[10px] md:w-[18px] md:h-[18px] rounded-full bg-white transform -translate-x-1/2 -translate-y-1/2 transition-[left] duration-1100 ease-in-out ${status !== 'idle' ? 'opacity-100' : 'opacity-0'} shadow-[0_0_16px_4px_var(--color-amber)]`}
               style={{ left: `${progress}%` }}
             ></div>
           </div>
@@ -150,7 +150,7 @@ export default function QualitySlide({ isActive }) {
                   <span className={`flex items-center justify-center leading-none select-none transition-opacity duration-300 ${iconClass}`}>{step.icon}</span>
                 </div>
                 <div 
-                  className={`font-disp text-[8.5px] md:text-[13px] font-bold uppercase tracking-[0.05em] leading-tight mt-[12px] md:mt-[16px] text-center transition-all duration-300 ${nmClass}`}
+                  className={`font-disp text-[8.5px] md:text-[13px] font-bold uppercase tracking-wider leading-tight mt-[12px] md:mt-[16px] text-center transition-all duration-300 ${nmClass}`}
                 >
                   {step.title}
                 </div>

@@ -18,9 +18,10 @@ import DistributionSlide from './components/slides/DistributionSlide';
 import ManagementSystemSlide from './components/slides/ManagementSystemSlide';
 import CloseSlide from './components/slides/CloseSlide';
 import OurClientSlide from './components/slides/OurClientSlide';
+import RateListSlide from './components/slides/RateListSlide';
 import ThankYouSlide from './components/slides/ThankYouSlide';
 
-const TOTAL_SLIDES = 18;
+const TOTAL_SLIDES = 19;
 
 function App() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -111,7 +112,8 @@ function App() {
         <ManagementSystemSlide isActive={activeIndex === 14} />
         <CloseSlide isActive={activeIndex === 15} />
         <OurClientSlide isActive={activeIndex === 16} />
-        <ThankYouSlide isActive={activeIndex === 17} />
+        <RateListSlide isActive={activeIndex === 17} />
+        <ThankYouSlide isActive={activeIndex === 18} />
       </div>
 
 

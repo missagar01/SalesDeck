@@ -124,7 +124,7 @@ export default function CloseSlide({ isActive }) {
   ];
 
   return (
-    <Slide isActive={isActive}>
+    <Slide isActive={isActive} center>
       <div className="eyebrow">Let's build together</div>
       <h2>Reliable steel, run by a system <span className="accent">that never sleeps.</span></h2>
       <p className="lede">From your enquiry to dispatch &mdash; and every machine, part and person behind it &mdash; it all moves on the clock, on one system.</p>
@@ -142,7 +142,7 @@ export default function CloseSlide({ isActive }) {
             >
               <div className="flex flex-col items-center text-center w-full md:w-[120px] xl:w-[150px] mx-auto">
                 {/* Icon Circle */}
-                <div className="w-[50px] h-[50px] md:w-[75px] md:h-[75px] rounded-full border-[2px] border-[#d32f2f] flex items-center justify-center bg-white shadow-sm transition-transform duration-300 hover:scale-110 cursor-pointer">
+                <div className="w-[50px] h-[50px] md:w-[75px] md:h-[75px] rounded-full border-2 border-[#d32f2f] flex items-center justify-center bg-white shadow-sm transition-transform duration-300 hover:scale-110 cursor-pointer">
                   {/* Scale down the pre-rendered SVG on mobile */}
                   <div className="scale-[0.8] md:scale-100 flex items-center justify-center">
                     {reason.icon}
@@ -161,7 +161,7 @@ export default function CloseSlide({ isActive }) {
               {/* Connecting Arrow (Desktop Only) */}
               {i < reasons.length - 1 && (
                 <div 
-                  className={`hidden md:flex items-center justify-center pt-[35px] text-[#d1d1d1] flex-shrink-0 mx-[5px] lg:mx-[15px] ${isActive ? 'animate-fade' : 'opacity-0'}`}
+                  className={`hidden md:flex items-center justify-center pt-[35px] text-[#d1d1d1] shrink-0 mx-[5px] lg:mx-[15px] ${isActive ? 'animate-fade' : 'opacity-0'}`}
                   style={{ animationDelay: `${i * 150 + 275}ms`, animationFillMode: 'both', animationDuration: '400ms' }}
                 >
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-[18px] h-[18px] lg:w-[24px] lg:h-[24px]">

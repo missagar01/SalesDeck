@@ -17,41 +17,41 @@ export default function DeptMapSlide({ isActive }) {
   ];
 
   return (
-    <Slide isActive={isActive}>
+    <Slide isActive={isActive} center>
       <div className="eyebrow">Turning Industry Challenges to Smart Solutions</div>
       <h2>The Smart <span className="accent">Way Forward.</span></h2>
       <p className="lede">How we tackle common industry hurdles to deliver unmatched value to your business.</p>
       
       {/* Mobile Top Graphic */}
-      <div className={`md:hidden flex relative w-[160px] h-[80px] mx-auto mt-[10px] mb-[4px] shrink-0 ${isActive ? 'animate-slideIn' : 'opacity-0'}`} style={{ animationDelay: '1100ms', animationFillMode: 'both' }}>
-        <div className="absolute inset-0 flex shadow-md rounded-[12px] overflow-hidden border border-line">
+      <div className={`md:hidden flex relative w-[220px] h-[100px] mx-auto mt-[10px] mb-[4px] shrink-0 ${isActive ? 'animate-slideIn' : 'opacity-0'}`} style={{ animationDelay: '1100ms', animationFillMode: 'both' }}>
+        <div className="absolute inset-0 flex shadow-md rounded-[14px] overflow-hidden border border-line">
           <div className="w-1/2 bg-[#1e293b] flex flex-col items-center justify-center pt-[4px]">
-            <div className="text-amber text-[20px]">&#9888;&#65039;</div>
-            <div className="text-white font-disp text-[9px] mt-1 font-bold tracking-wide">Challenges</div>
+            <div className="text-amber text-[26px]">&#9888;&#65039;</div>
+            <div className="text-white font-disp text-[11px] mt-1 font-bold tracking-wide">Challenges</div>
           </div>
           <div className="w-1/2 bg-white flex flex-col items-center justify-center pt-[4px]">
-            <div className="text-green text-[20px]">&#128640;</div>
-            <div className="text-ink font-disp text-[9px] mt-1 font-bold tracking-wide">Solutions</div>
+            <div className="text-green text-[26px]">&#128640;</div>
+            <div className="text-ink font-disp text-[11px] mt-1 font-bold tracking-wide">Solutions</div>
           </div>
         </div>
-        
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[44px] h-[44px] bg-[#1e293b] rounded-full border-[3px] border-white shadow-lg flex items-center justify-center p-[6px]">
+
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[54px] h-[54px] bg-[#1e293b] rounded-full border-[3px] border-white shadow-lg flex items-center justify-center p-[8px]">
            <img src={logoImg} alt="Sagar Logo" className="w-full h-auto object-contain" />
         </div>
       </div>
 
-      <div className="flex flex-row w-full mt-[4px] md:mt-[30px] items-stretch gap-[8px] md:gap-[16px] flex-1 pb-2">
-        
+      <div className="flex flex-row w-full mt-[4px] md:mt-[30px] items-stretch gap-[10px] md:gap-[16px] flex-1 md:max-h-[400px] pb-2">
+
         {/* Left Column: Challenges */}
-        <div className="flex-1 flex flex-col justify-start md:justify-center gap-[6px] md:gap-[20px] pt-[4px] md:pt-0">
+        <div className="flex-1 flex flex-col justify-start md:justify-center gap-[8px] md:gap-[20px] pt-[4px] md:pt-0">
           {challenges.map((c, i) => (
-            <div key={i} className={`flex items-start gap-[4px] md:gap-[12px] bg-panel md:bg-transparent p-[6px] md:p-0 rounded-lg border border-line md:border-none ${isActive ? 'animate-slideIn' : 'opacity-0'}`} style={{ animationDelay: `${300 + (i * 200)}ms`, animationFillMode: 'both' }}>
-              <div className="font-disp font-black text-[18px] md:text-[46px] leading-[0.8] text-amber-soft select-none mt-[2px] md:mt-[4px]">
+            <div key={i} className={`flex items-start gap-[6px] md:gap-[12px] bg-panel md:bg-transparent p-[8px] md:p-0 rounded-lg border border-line md:border-none ${isActive ? 'animate-slideIn' : 'opacity-0'}`} style={{ animationDelay: `${300 + (i * 200)}ms`, animationFillMode: 'both' }}>
+              <div className="font-disp font-black text-[20px] md:text-[46px] leading-[0.8] text-amber-soft select-none mt-[2px] md:mt-[4px]">
                 {i + 1}
               </div>
               <div>
-                <b className="font-disp text-[9px] sm:text-[11px] md:text-[17px] text-amber block mb-[1px] md:mb-[2px]">{c.title}:</b>
-                <span className="text-muted text-[7px] sm:text-[9px] md:text-[14px] leading-[1.2] md:leading-[1.4] block">
+                <b className="font-disp text-[11px] sm:text-[13px] md:text-[17px] text-amber block mb-px md:mb-[2px]">{c.title}:</b>
+                <span className="text-muted text-[9px] sm:text-[10.5px] md:text-[14px] leading-tight md:leading-[1.4] block">
                   {c.text}
                 </span>
               </div>
@@ -60,7 +60,7 @@ export default function DeptMapSlide({ isActive }) {
         </div>
 
         {/* Center Graphic (Desktop) */}
-        <div className={`hidden md:flex relative w-[180px] flex-col items-center justify-center shrink-0 ${isActive ? 'animate-slideIn' : 'opacity-0'}`} style={{ animationDelay: '1100ms', animationFillMode: 'both' }}>
+        <div className={`hidden md:flex relative w-[220px] flex-col items-center justify-center shrink-0 ${isActive ? 'animate-slideIn' : 'opacity-0'}`} style={{ animationDelay: '1100ms', animationFillMode: 'both' }}>
           <div className="absolute inset-y-0 left-[20px] right-[20px] flex shadow-xl rounded-[16px] overflow-hidden border border-line">
             <div className="w-1/2 bg-[#1e293b] flex flex-col items-center justify-start pt-[60px]">
               <div className="text-amber text-[32px]">&#9888;&#65039;</div>
@@ -78,15 +78,15 @@ export default function DeptMapSlide({ isActive }) {
         </div>
 
         {/* Right Column: Solutions */}
-        <div className="flex-1 flex flex-col justify-start md:justify-center gap-[6px] md:gap-[20px] pt-[4px] md:pt-0">
+        <div className="flex-1 flex flex-col justify-start md:justify-center gap-[8px] md:gap-[20px] pt-[4px] md:pt-0">
           {solutions.map((s, i) => (
-            <div key={i} className={`flex items-start gap-[4px] md:gap-[12px] bg-panel md:bg-transparent p-[6px] md:p-0 rounded-lg border border-line md:border-none ${isActive ? 'animate-slideIn' : 'opacity-0'}`} style={{ animationDelay: `${1300 + (i * 200)}ms`, animationFillMode: 'both' }}>
-              <div className="font-disp font-black text-[18px] md:text-[46px] leading-[0.8] text-green/20 select-none mt-[2px] md:mt-[4px]">
+            <div key={i} className={`flex items-start gap-[6px] md:gap-[12px] bg-panel md:bg-transparent p-[8px] md:p-0 rounded-lg border border-line md:border-none ${isActive ? 'animate-slideIn' : 'opacity-0'}`} style={{ animationDelay: `${1300 + (i * 200)}ms`, animationFillMode: 'both' }}>
+              <div className="font-disp font-black text-[20px] md:text-[46px] leading-[0.8] text-green/20 select-none mt-[2px] md:mt-[4px]">
                 {i + 1}
               </div>
               <div>
-                <b className="font-disp text-[9px] sm:text-[11px] md:text-[17px] text-green block mb-[1px] md:mb-[2px]">{s.title}:</b>
-                <span className="text-muted text-[7px] sm:text-[9px] md:text-[14px] leading-[1.2] md:leading-[1.4] block">
+                <b className="font-disp text-[11px] sm:text-[13px] md:text-[17px] text-green block mb-px md:mb-[2px]">{s.title}:</b>
+                <span className="text-muted text-[9px] sm:text-[10.5px] md:text-[14px] leading-tight md:leading-[1.4] block">
                   {s.text}
                 </span>
               </div>

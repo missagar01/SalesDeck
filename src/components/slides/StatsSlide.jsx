@@ -33,7 +33,7 @@ export default function StatsSlide({ isActive }) {
 
         {/* Right Side: Image Div */}
         <div className={`lg:col-span-5 w-full flex justify-center ${isActive ? 'animate-slideUp' : 'opacity-0'}`} style={{ animationDelay: '400ms', animationDuration: '700ms', animationFillMode: 'both' }}>
-          <div className="relative overflow-hidden rounded-[20px] border border-line bg-white shadow-md w-full aspect-[16/10] sm:aspect-[2/1] lg:aspect-auto lg:h-[450px] group">
+          <div className="relative overflow-hidden rounded-[20px] border border-line bg-white shadow-md w-full aspect-16/10 sm:aspect-2/1 lg:aspect-auto lg:h-[450px] group">
             <img
               src={constructionSkylineImg}
               alt="Steel rebar installation overlooking city skyline"

@@ -3,13 +3,13 @@ import logoImg from '../../assets/tlogo.png';
 
 export default function PillarsSlide({ isActive }) {
   return (
-    <Slide isActive={isActive}>
+    <Slide isActive={isActive} center>
       <div className="eyebrow">Manufacturing Infrastructure</div>
       <h2>End-to-End <span className="accent">Integration.</span></h2>
       <p className="lede">From raw materials to finished products, our entire process is controlled in-house for maximum quality and efficiency.</p>
 
       {/* Diagram Container */}
-      <div className="flex flex-col md:flex-row items-center justify-center w-full mt-[4px] md:mt-[50px] gap-[4px] md:gap-[40px] flex-1">
+      <div className="flex flex-col md:flex-row items-center justify-center w-full mt-[4px] md:mt-[50px] gap-[4px] md:gap-[40px]">
         
         {/* Step 1: Raw Materials */}
         <div className={`flex flex-col items-center gap-[4px] md:gap-[12px] ${isActive ? 'animate-slideIn' : 'opacity-0'}`} style={{ animationDelay: '300ms', animationFillMode: 'both' }}>

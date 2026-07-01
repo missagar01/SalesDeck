@@ -41,7 +41,7 @@ export default function CapacitySlide({ isActive }) {
         </div>
 
         {/* Interactive Infinity Loop UI */}
-        <div className="relative w-[95%] sm:w-full max-w-lg sm:max-w-xl md:max-w-2xl lg:max-w-3xl aspect-[2/1] mt-[70px] sm:mt-16 mb-8 sm:mb-4 scale-[0.55] sm:scale-90 md:scale-100 mx-auto origin-center shrink-0">
+        <div className="relative w-[95%] sm:w-full max-w-lg sm:max-w-xl md:max-w-2xl lg:max-w-3xl aspect-2/1 mt-[70px] sm:mt-16 mb-8 sm:mb-4 scale-[0.55] sm:scale-90 md:scale-100 mx-auto origin-center shrink-0">
           
           {/* SVG Infinity Loop Graphic */}
           <svg viewBox="0 0 1000 500" className="absolute inset-0 w-full h-full drop-shadow-xl overflow-visible pointer-events-none">
@@ -102,7 +102,7 @@ export default function CapacitySlide({ isActive }) {
                 <button 
                   onClick={() => setActiveNodes(prev => prev.includes(node.id) ? prev.filter(id => id !== node.id) : [...prev, node.id])}
                   className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full shadow-lg flex items-center justify-center border-[3px] transition-all duration-300 hover:scale-110 cursor-pointer ${
-                    isActiveNode ? 'bg-[#dc2626] border-white text-white' : 'bg-white border-[#dc2626] text-[#dc2626]'
+                    isActiveNode ? 'bg-amber border-white text-white' : 'bg-white border-amber text-amber'
                   }`}
                   aria-label={`Toggle ${node.title}`}
                 >

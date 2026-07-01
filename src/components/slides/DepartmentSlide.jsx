@@ -215,7 +215,7 @@ export default function DepartmentSlide({ isActive }) {
   };
 
   return (
-    <Slide isActive={isActive}>
+    <Slide isActive={isActive} center>
       <div className="flex justify-between items-end gap-[16px] md:gap-[20px] flex-wrap">
         <div>
           <div className="eyebrow flex items-center gap-[8px]">
@@ -229,7 +229,7 @@ export default function DepartmentSlide({ isActive }) {
               <button
                 key={tab.id}
                 onClick={() => reset(tab.id)}
-                className={`px-[12px] py-[8px] md:px-[16px] md:py-[10px] rounded-[8px] text-[10px] md:text-[12px] font-mono tracking-[0.05em] transition-all border ${
+                className={`px-[12px] py-[8px] md:px-[16px] md:py-[10px] rounded-[8px] text-[10px] md:text-[12px] font-mono tracking-wider transition-all border ${
                   activeTab === tab.id 
                   ? 'border-amber text-amber bg-amber-soft' 
                   : 'border-line text-muted bg-panel hover:bg-panel2'
@@ -253,7 +253,7 @@ export default function DepartmentSlide({ isActive }) {
           {/* Background Track Line (Desktop) */}
           <div className="hidden md:block absolute md:left-[32px] md:right-[32px] lg:left-[40px] lg:right-[40px] top-[28px] h-[3px] bg-line rounded-[3px] z-0">
              <div 
-               className={`absolute left-0 top-0 bottom-0 rounded-[3px] transition-[width] duration-[1100ms] ease-in-out ${status === 'delay' && activeStepIndex >= 1 ? 'bg-[linear-gradient(90deg,#ff4d4d,#ff8a8a)]' : 'bg-[linear-gradient(90deg,var(--color-amber),#ffb066)]'}`}
+               className={`absolute left-0 top-0 bottom-0 rounded-[3px] transition-[width] duration-1100 ease-in-out ${status === 'delay' && activeStepIndex >= 1 ? 'bg-[linear-gradient(90deg,#ff4d4d,#ff8a8a)]' : 'bg-[linear-gradient(90deg,var(--color-amber),#ffb066)]'}`}
                style={{ width: `${progress}%` }}
              ></div>
           </div>
@@ -261,7 +261,7 @@ export default function DepartmentSlide({ isActive }) {
           {/* Moving Glowing Dot (Desktop) */}
           <div className="hidden md:block absolute md:left-[32px] md:right-[32px] lg:left-[40px] lg:right-[40px] top-[28px] h-0 pointer-events-none z-30">
             <div 
-              className={`absolute top-0 w-[14px] h-[14px] rounded-full bg-white transform -translate-x-1/2 -translate-y-1/2 transition-[left] duration-[1100ms] ease-in-out ${status !== 'idle' ? 'opacity-100' : 'opacity-0'} ${status === 'delay' && activeStepIndex >= 1 ? 'shadow-[0_0_16px_4px_#ff4d4d]' : 'shadow-[0_0_16px_4px_var(--color-amber)]'}`}
+              className={`absolute top-0 w-[14px] h-[14px] rounded-full bg-white transform -translate-x-1/2 -translate-y-1/2 transition-[left] duration-1100 ease-in-out ${status !== 'idle' ? 'opacity-100' : 'opacity-0'} ${status === 'delay' && activeStepIndex >= 1 ? 'shadow-[0_0_16px_4px_#ff4d4d]' : 'shadow-[0_0_16px_4px_var(--color-amber)]'}`}
               style={{ left: `${progress}%` }}
             ></div>
           </div>
@@ -311,7 +311,7 @@ export default function DepartmentSlide({ isActive }) {
                 {/* Mobile Track Line Fragment */}
                 {i !== 2 && i !== 5 && i !== currentSteps.length - 1 && (
                   <div className="md:hidden absolute left-[50%] right-[-50%] top-[12px] h-[2px] bg-line -z-10">
-                    <div className={`absolute left-0 top-0 bottom-0 transition-all duration-[1100ms] ${status === 'delay' && activeStepIndex >= 1 ? 'bg-[linear-gradient(90deg,#ff4d4d,#ff8a8a)]' : 'bg-[linear-gradient(90deg,var(--color-amber),#ffb066)]'}`}
+                    <div className={`absolute left-0 top-0 bottom-0 transition-all duration-1100 ${status === 'delay' && activeStepIndex >= 1 ? 'bg-[linear-gradient(90deg,#ff4d4d,#ff8a8a)]' : 'bg-[linear-gradient(90deg,var(--color-amber),#ffb066)]'}`}
                          style={{ width: isDone ? '100%' : (isCurrent ? '50%' : '0%') }}></div>
                   </div>
                 )}
@@ -321,7 +321,7 @@ export default function DepartmentSlide({ isActive }) {
                   <span className={`transition-opacity duration-300 ${iconClass}`}>{step.icon}</span>
                 </div>
                 <div 
-                  className={`font-disp text-[7.5px] md:text-[10px] font-bold uppercase tracking-[0.05em] leading-tight mt-[12px] md:mt-[16px] text-center transition-all duration-300 ${nmClass}`}
+                  className={`font-disp text-[7.5px] md:text-[10px] font-bold uppercase tracking-wider leading-tight mt-[12px] md:mt-[16px] text-center transition-all duration-300 ${nmClass}`}
                 >
                   {step.title}
                 </div>
@@ -334,8 +334,8 @@ export default function DepartmentSlide({ isActive }) {
 
       <div className="flex flex-col md:flex-row gap-[12px] md:gap-[16px] mt-[20px] md:mt-[50px]">
         {/* System Activity Log */}
-        <div className="flex-[2] border border-line bg-panel rounded-[12px] p-[12px] md:p-[20px] h-[110px] md:h-[200px] overflow-hidden flex flex-col relative">
-          <div className="text-muted font-mono text-[9px] md:text-[12px] uppercase tracking-[0.1em] mb-[6px] md:mb-[12px]">System Activity Log</div>
+        <div className="flex-2 border border-line bg-panel rounded-[12px] p-[12px] md:p-[20px] h-[110px] md:h-[200px] overflow-hidden flex flex-col relative">
+          <div className="text-muted font-mono text-[9px] md:text-[12px] uppercase tracking-widest mb-[6px] md:mb-[12px]">System Activity Log</div>
           <div ref={logRef} className="h-[70px] md:h-[148px] overflow-y-auto pr-[4px]">
             <div className="flex flex-col gap-[6px] md:gap-[8px]">
               {logs.map((log, i) => (
@@ -349,12 +349,12 @@ export default function DepartmentSlide({ isActive }) {
               )}
             </div>
           </div>
-          <div className="absolute bottom-0 left-0 right-0 h-[15px] bg-gradient-to-t from-panel to-transparent pointer-events-none"></div>
+          <div className="absolute bottom-0 left-0 right-0 h-[15px] bg-linear-to-t from-panel to-transparent pointer-events-none"></div>
         </div>
 
         {/* Dynamic Store/Board view */}
-        <div className="flex-[1] border border-line bg-panel2 rounded-[12px] p-[12px] md:p-[24px] flex flex-col justify-center min-h-[90px] md:min-h-0">
-          <div className="text-muted font-mono text-[9px] md:text-[12px] uppercase tracking-[0.1em] mb-[4px] md:mb-[8px]">
+        <div className="flex-1 border border-line bg-panel2 rounded-[12px] p-[12px] md:p-[24px] flex flex-col justify-center min-h-[90px] md:min-h-0">
+          <div className="text-muted font-mono text-[9px] md:text-[12px] uppercase tracking-widest mb-[4px] md:mb-[8px]">
             {activeTab === 'maintenance' && "Maintenance Board"}
             {activeTab === 'spare-parts' && "Store View"}
             {activeTab === 'hr' && "HR Desk"}
@@ -378,7 +378,7 @@ export default function DepartmentSlide({ isActive }) {
           </div>
           {status === 'delay' && activeStepIndex >= 1 && (
             <div className="mt-[10px] md:mt-[16px]">
-              <span className="inline-block px-[8px] py-[3px] md:px-[10px] md:py-[4px] bg-red-soft border border-[#ff4d4d] text-[#ff4d4d] text-[9px] md:text-[10px] font-mono uppercase tracking-[0.1em] rounded-[4px]">
+              <span className="inline-block px-[8px] py-[3px] md:px-[10px] md:py-[4px] bg-red-soft border border-[#ff4d4d] text-[#ff4d4d] text-[9px] md:text-[10px] font-mono uppercase tracking-widest rounded-[4px]">
                 TAT Breach
               </span>
             </div>

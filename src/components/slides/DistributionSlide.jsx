@@ -17,7 +17,7 @@ export default function DistributionSlide({ isActive }) {
   ];
 
   return (
-    <Slide isActive={isActive}>
+    <Slide isActive={isActive} center>
       <div className="eyebrow">Distribution Model</div>
       <h2>Our robust <span className="accent">Network.</span></h2>
       <p className="lede">Strategically designed to reach every segment with speed, reliability, and precision.</p>
@@ -36,7 +36,7 @@ export default function DistributionSlide({ isActive }) {
               <b className="font-disp text-[13px] md:text-[20px] text-ink block mb-[2px] md:mb-[8px] leading-tight">
                 {model.title}
               </b>
-              <p className="text-muted text-[11px] md:text-[14.5px] leading-[1.3] md:leading-[1.5]">
+              <p className="text-muted text-[11px] md:text-[14.5px] leading-[1.3] md:leading-normal">
                 {model.text}
               </p>
             </div>

@@ -106,7 +106,7 @@ export default function TimeBoundTasksSlide({ isActive }) {
   const isDelayColor = status === 'delaying' && activeStage >= 1;
 
   return (
-    <Slide isActive={isActive}>
+    <Slide isActive={isActive} center>
       <div className="flex justify-between items-end gap-[16px] md:gap-[20px] flex-wrap">
         <div>
           <div className="eyebrow flex items-center gap-[8px]">
@@ -140,8 +140,8 @@ export default function TimeBoundTasksSlide({ isActive }) {
       <div className="flex flex-col md:flex-row gap-[12px] md:gap-[30px] mt-[16px] md:mt-[36px] lg:mt-[48px] h-auto md:h-[320px]">
         
         {/* Left Panel - Active Task */}
-        <div className="flex-[3] border border-line bg-panel rounded-[12px] md:rounded-[16px] p-[16px] md:p-[32px] flex flex-col justify-center relative">
-          <div className="text-muted font-mono text-[10px] md:text-[12px] uppercase tracking-[0.1em] mb-[8px] md:mb-[12px]">Active Task</div>
+        <div className="flex-3 border border-line bg-panel rounded-[12px] md:rounded-[16px] p-[16px] md:p-[32px] flex flex-col justify-center relative">
+          <div className="text-muted font-mono text-[10px] md:text-[12px] uppercase tracking-widest mb-[8px] md:mb-[12px]">Active Task</div>
           <div className="text-[20px] md:text-[32px] font-bold text-ink leading-tight mb-[4px] md:mb-[8px]">
             Confirm dispatch — Order #IC-1042
           </div>
@@ -151,8 +151,8 @@ export default function TimeBoundTasksSlide({ isActive }) {
           
           <div>
             <div className="flex justify-between items-end mb-[10px]">
-              <div className="text-muted font-mono text-[10px] md:text-[12px] uppercase tracking-[0.1em]">Time used</div>
-              <div className={`font-mono text-[10px] md:text-[12px] uppercase tracking-[0.05em] transition-colors duration-300 ${statusColor}`}>
+              <div className="text-muted font-mono text-[10px] md:text-[12px] uppercase tracking-widest">Time used</div>
+              <div className={`font-mono text-[10px] md:text-[12px] uppercase tracking-wider transition-colors duration-300 ${statusColor}`}>
                 {statusText}
               </div>
             </div>
@@ -168,7 +168,7 @@ export default function TimeBoundTasksSlide({ isActive }) {
         </div>
         
         {/* Right Panel - Steps */}
-        <div className="flex-[2] flex flex-col gap-[8px] md:gap-[16px]">
+        <div className="flex-2 flex flex-col gap-[8px] md:gap-[16px]">
           
           {/* Box 1: Task Owner */}
           <div className={`flex-1 border rounded-[12px] md:rounded-[16px] p-[12px] md:p-[20px] flex gap-[12px] md:gap-[16px] items-center transition-all duration-300 ${
